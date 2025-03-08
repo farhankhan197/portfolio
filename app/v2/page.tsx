@@ -198,17 +198,17 @@ export default function Home(): JSX.Element {
       </div>
 
       {/* Main Content */}
-      <main className="w-full max-w-3xl bg-white dark:bg-opacity-0 rounded-xl p-6 shadow-lg">
+      <main className="w-full max-w-3xl bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
         {/* Hero Section */}
-        <div className="text-center mb-10">
-          <h1 className="text-5xl font-extrabold">Farhan Khan</h1>
+        <div className="text-center mb-10  bg-black ">
+          <h1 className="text-5xl  font-extrabold">Farhan Khan</h1>
           <p className="text-muted-foreground mt-2 text-lg">
             Software Engineer
           </p>
         </div>
 
         {/* About Me */}
-        <section className="mb-6">
+        <section className="mb-6 p-4 bg-black border border-white rounded-sm">
           <h2 className="text-xl font-semibold mb-3">About Me</h2>
           <p className="text-muted-foreground">
             I am a passionate software engineer with a strong background in
@@ -219,7 +219,7 @@ export default function Home(): JSX.Element {
         </section>
 
         {/* Technical Skills */}
-        <section className="mb-6">
+        <section className="mb-6 p-4 bg-black border border-white rounded-sm">
           <h2 className="text-xl font-semibold mb-3">Technical Skills</h2>
           <p className="text-muted-foreground">
             Proficient in JavaScript, TypeScript, React, Next.js, and Node.js.
@@ -230,7 +230,7 @@ export default function Home(): JSX.Element {
         </section>
 
         {/* Additional Links */}
-        <section className="mb-6">
+        <section className="mb-6 p-4 bg-black border border-white rounded-sm">
           <h2 className="text-md text-muted-foreground mb-3">
             Connect with me
           </h2>
@@ -249,7 +249,7 @@ export default function Home(): JSX.Element {
         </section>
 
         {/* More Links and Availability */}
-        <section className="mb-6">
+        <section className="mb-6 ">
           <h2 className="text-md text-muted-foreground mb-3">More Links</h2>
           <p className="text-muted-foreground">
             Check out my blog and other resources.
