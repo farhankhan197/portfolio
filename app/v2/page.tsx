@@ -239,7 +239,7 @@ export default function Home(): JSX.Element {
               <Link
                 key={link.name}
                 href={link.url}
-                className="flex items-center justify-center gap-2 p-3 bg-gray-200 dark:bg-gray-700 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-all"
+                className="flex items-center justify-center gap-2 p-3 bg-gray-800 dark:bg-gray-700 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-all"
               >
                 {link.icon}
                 <span className="font-medium">{link.name}</span>
