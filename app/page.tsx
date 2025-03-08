@@ -16,7 +16,7 @@ export default function Home() {
   const [showSocials, setShowSocials] = useState(false);
   const [isAvailable, setIsAvailable] = useState(true);
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen text-foreground flex flex-col items-center justify-center p-4">
      {/* <FallingStarsBackground />  */}
       <main className="max-w-sm w-full">
         {/* Profile Section */}
