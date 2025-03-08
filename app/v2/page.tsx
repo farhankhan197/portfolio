@@ -102,7 +102,7 @@ export default function Home(): JSX.Element {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center p-6  dark:bg-gray-900 text-foreground">
+    <div className="min-h-screen flex flex-col items-center p-6 text-foreground">
       {/* Navbar */}
       <nav className="w-full max-w-5xl flex justify-between items-center bg-white dark:bg-black shadow-md rounded-lg p-4 mb-6 sticky top-0 z-40">
         <div className="flex items-center gap-4">
@@ -113,7 +113,7 @@ export default function Home(): JSX.Element {
             height={40}
             className="rounded-full"
           />
-          <h1 className="text-lg bg-white z-2 bg-opacity-100 dark:bg-black p-4 font-semibold">
+          <h1 className="text-lg bg-white dark:bg-black p-4 font-semibold">
             Farhan Khan
           </h1>
         </div>
