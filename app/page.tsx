@@ -9,7 +9,6 @@ import { Building2, ChevronRight, LinkIcon,  Instagram, Facebook, X, Dribbble } 
 // import FallingStarsBackground from "@/components/FallingStars";
 // import StarfieldBackground from "@/components/StarField";
 import dynamic from "next/dynamic";
-import { RoughNotation } from "react-rough-notation";
 
 const LeetCodeIcon = dynamic(() => import("@/components/LeetcodeIcon"), { ssr: false });
 
@@ -41,9 +40,7 @@ export default function Home() {
 
         {/* Name & Role */}
         <div className="flex flex-col items-center mb-8 text-center">
-          <RoughNotation show type="underline" color="gray">
             <h1 className="text-4xl font-bold">Farhan Khan</h1>
-          </RoughNotation>
           <p className="text-muted-foreground mt-4 text-lg">Software Engineer</p>
         </div>
 
