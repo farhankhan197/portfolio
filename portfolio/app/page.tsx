@@ -14,8 +14,7 @@ export default function Home() {
   const [isAvailable, setIsAvailable] = useState(true);
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col items-center justify-center p-4">
-      <FallingStarsBackground />
-
+     <FallingStarsBackground /> 
       <main className="max-w-sm w-full">
         {/* Profile Section */}
         <div className="flex flex-col items-center mb-8">

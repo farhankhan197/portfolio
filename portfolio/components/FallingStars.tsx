@@ -16,10 +16,12 @@ const FallingStarsBackground: React.FC = () => {
 
     let animationFrameId: number;
 
-    // Resize canvas to full screen
+    // Resize canvas properly
     const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      ctx.scale(dpr, dpr);
     };
 
     window.addEventListener("resize", resizeCanvas);
@@ -37,8 +39,8 @@ const FallingStarsBackground: React.FC = () => {
       opacity: number;
     }
 
+    const maxStars = window.innerWidth < 768 ? 50 : 100; // Fewer stars on mobile
     const stars: Star[] = [];
-    const maxStars = 100;
 
     // Initialize stars
     for (let i = 0; i < maxStars; i++) {
@@ -46,12 +48,11 @@ const FallingStarsBackground: React.FC = () => {
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
         size: Math.random() * 2,
-        speedY: 0.1 + Math.random() * 0.3,
-        speedX: (Math.random() - 0.5) * 0.1,
+        speedY: 0.2 + Math.random() * 0.4,
+        speedX: (Math.random() - 0.5) * 0.2,
         trail: [],
         maxTrailLength: Math.floor(5 + Math.random() * 10),
-        opacity: 0.1 + Math.random() * 0.9,
-        
+        opacity: 0.3 + Math.random() * 0.7,
       });
     }
 
@@ -69,10 +70,8 @@ const FallingStarsBackground: React.FC = () => {
         star.y += star.speedY;
         star.x += star.speedX;
 
-        // Add current position to trail
+        // Add to trail
         star.trail.push({ x: star.x, y: star.y });
-
-        // Limit trail length
         if (star.trail.length > star.maxTrailLength) {
           star.trail.shift();
         }
@@ -81,11 +80,9 @@ const FallingStarsBackground: React.FC = () => {
         if (star.trail.length > 1) {
           ctx.beginPath();
           ctx.moveTo(star.trail[0].x, star.trail[0].y);
-
           for (let i = 1; i < star.trail.length; i++) {
             ctx.lineTo(star.trail[i].x, star.trail[i].y);
           }
-
           ctx.strokeStyle = `${starColor}${star.opacity * 0.5})`;
           ctx.lineWidth = star.size / 2;
           ctx.stroke();
@@ -99,7 +96,7 @@ const FallingStarsBackground: React.FC = () => {
 
         // Reset if star goes out of bounds
         if (star.y > canvas.height || star.x < 0 || star.x > canvas.width) {
-          star.y = 0;
+          star.y = -10;
           star.x = Math.random() * canvas.width;
           star.trail = [];
         }
