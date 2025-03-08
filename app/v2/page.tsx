@@ -198,7 +198,7 @@ export default function Home(): JSX.Element {
       </div>
 
       {/* Main Content */}
-      <main className="w-full max-w-3xl bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+      <main className="w-full max-w-3xl bg-white dark:bg-opacity-0 rounded-xl p-6 shadow-lg">
         {/* Hero Section */}
         <div className="text-center mb-10">
           <h1 className="text-5xl font-extrabold">Farhan Khan</h1>
