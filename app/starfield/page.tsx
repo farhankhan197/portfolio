@@ -1,9 +1,11 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useTheme } from "next-themes";
 
 const StarfieldBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { theme } = useTheme(); // Get current theme
   let animationFrameId: number;
 
   useEffect(() => {
@@ -22,6 +24,7 @@ const StarfieldBackground = () => {
     let framesPerSecond = 60;
     let interval = Math.floor(1000 / framesPerSecond);
     let previousTime = performance.now();
+    let bgColor = theme === "dark" ? "#111" : "#f0f0f0"; // Dynamic background color
 
     class Star {
       x: number;
@@ -59,7 +62,7 @@ const StarfieldBackground = () => {
         ctx.beginPath();
         ctx.arc(starX, starY, radius, 0, Math.PI * 2, false);
         ctx.closePath();
-        ctx.fillStyle = "#fff";
+        ctx.fillStyle = theme === "dark" ? "#fff" : "#000"; // Star color adapts to theme
         ctx.fill();
       }
     }
@@ -79,7 +82,7 @@ const StarfieldBackground = () => {
         previousTime = timestamp - (deltaTime % interval);
 
         ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-        ctx.fillStyle = "#111";
+        ctx.fillStyle = bgColor; // Use theme-based background
         ctx.fillRect(0, 0, canvasWidth, canvasHeight);
 
         ctx.save();
@@ -121,7 +124,7 @@ const StarfieldBackground = () => {
       window.removeEventListener("resize", resizeCanvas);
       cancelAnimationFrame(animationFrameId);
     };
-  }, []);
+  }, [theme]); // Re-run effect when theme changes
 
   return (
     <canvas
