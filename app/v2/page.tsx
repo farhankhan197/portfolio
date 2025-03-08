@@ -10,13 +10,7 @@ import dynamic from "next/dynamic";
 const LeetCodeIcon = dynamic(() => import("@/components/LeetcodeIcon"), {
   ssr: false,
 });
-const RoughNotation = dynamic(
-  () =>
-    import("react-rough-notation").then(
-      (mod) => mod.RoughNotation
-    ) as Promise<any>,
-  { ssr: false }
-);
+
 
 // Define navigation item type
 type NavItem = {
