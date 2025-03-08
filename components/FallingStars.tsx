@@ -16,7 +16,7 @@ const FallingStarsBackground: React.FC = () => {
 
     let animationFrameId: number;
 
-    // Resize canvas properly
+    // Resize canvas to match screen size
     const resizeCanvas = () => {
       const dpr = window.devicePixelRatio || 1;
       canvas.width = window.innerWidth * dpr;
@@ -39,62 +39,54 @@ const FallingStarsBackground: React.FC = () => {
       opacity: number;
     }
 
-    const maxStars = window.innerWidth < 768 ? 50 : 100; // Fewer stars on mobile
+    const maxStars = window.innerWidth < 768 ? 40 : 80; // Reduce stars on mobile
     const stars: Star[] = [];
 
-    // Initialize stars
     for (let i = 0; i < maxStars; i++) {
       stars.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 2,
-        speedY: 0.2 + Math.random() * 0.4,
-        speedX: (Math.random() - 0.5) * 0.2,
+        size: Math.random() * 2 + 0.5, // Prevent invisible stars
+        speedY: 0.5 + Math.random() * 0.7, // Slightly faster
+        speedX: (Math.random() - 0.5) * 0.3,
         trail: [],
-        maxTrailLength: Math.floor(5 + Math.random() * 10),
-        opacity: 0.3 + Math.random() * 0.7,
+        maxTrailLength: Math.floor(5 + Math.random() * 8),
+        opacity: 0.5 + Math.random() * 0.5,
       });
     }
 
-    // Animation loop
     const animate = () => {
-      const isDarkMode = theme === "dark"; // Check if the current theme is dark
+      const isDarkMode = theme === "dark";
       const starColor = isDarkMode ? "rgba(255, 255, 255," : "rgba(0, 0, 0,";
 
-      // Clear canvas
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Draw and update stars
       stars.forEach((star) => {
-        // Update position
         star.y += star.speedY;
         star.x += star.speedX;
 
-        // Add to trail
         star.trail.push({ x: star.x, y: star.y });
+
         if (star.trail.length > star.maxTrailLength) {
           star.trail.shift();
         }
 
-        // Draw trail
         if (star.trail.length > 1) {
           ctx.beginPath();
           ctx.moveTo(star.trail[0].x, star.trail[0].y);
           for (let i = 1; i < star.trail.length; i++) {
             ctx.lineTo(star.trail[i].x, star.trail[i].y);
           }
-          ctx.strokeStyle = `${starColor}${star.opacity * 0.5})`;
+          ctx.strokeStyle = `${starColor}${star.opacity * 0.3})`;
           ctx.lineWidth = star.size / 2;
           ctx.stroke();
         }
 
-        // Draw star
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
         ctx.fillStyle = `${starColor}${star.opacity})`;
         ctx.fill();
 
-        // Reset if star goes out of bounds
         if (star.y > canvas.height || star.x < 0 || star.x > canvas.width) {
           star.y = -10;
           star.x = Math.random() * canvas.width;
@@ -107,18 +99,17 @@ const FallingStarsBackground: React.FC = () => {
 
     animate();
 
-    // Cleanup
     return () => {
       window.removeEventListener("resize", resizeCanvas);
       cancelAnimationFrame(animationFrameId);
     };
-  }, [theme]); // Re-run animation when theme changes
+  }, [theme]);
 
   return (
     <canvas
       ref={canvasRef}
       className="fixed top-0 left-0 w-full h-full pointer-events-none"
-      style={{ zIndex: -1 }}
+      style={{ zIndex: -1, touchAction: "none" }} // Prevent mobile touch interference
     />
   );
 };
