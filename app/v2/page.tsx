@@ -200,7 +200,7 @@ export default function Home(): JSX.Element {
       {/* Main Content */}
       <main className="w-full max-w-3xl  rounded-xl p-6 shadow-lg">
         {/* Hero Section */}
-        <div className="text-center mb-10  light:bg-white dark:bg-black ">
+        <div className="text-center mb-10">
           <h1 className="text-5xl  font-extrabold">Farhan Khan</h1>
           <p className="text-muted-foreground mt-2 text-lg">
             Software Engineer
