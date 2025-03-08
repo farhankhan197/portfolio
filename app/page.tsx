@@ -3,12 +3,15 @@ import Image from "next/image";
 import { ModeToggle } from "@/components/ModeToggle";
 import Link from "next/link";
 import { useState } from "react";
-import  LeetCodeIcon  from "@/components/LeetcodeIcon";
 import TwitterIcon from "@/components/TwitterIcon";
 import { Building2, ChevronRight, LinkIcon,  Instagram, Facebook, X, Dribbble } from 'lucide-react'
 
-import FallingStarsBackground from "@/components/FallingStars";
-import StarfieldBackground from "@/components/StarField";
+// import FallingStarsBackground from "@/components/FallingStars";
+// import StarfieldBackground from "@/components/StarField";
+import dynamic from "next/dynamic";
+
+const StarfieldBackground = dynamic(() => import("@/components/StarField"), { ssr: false });
+const LeetCodeIcon = dynamic(() => import("@/components/LeetcodeIcon"), { ssr: false });
 
 export default function Home() {
   const [showSocials, setShowSocials] = useState(false);
