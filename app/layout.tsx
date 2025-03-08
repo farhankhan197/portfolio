@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import StarfieldBackground from "@/components/StarField";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -34,6 +35,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
+            <StarfieldBackground />
             {children}
           </ThemeProvider>
         </body>

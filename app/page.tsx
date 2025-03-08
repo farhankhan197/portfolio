@@ -10,7 +10,6 @@ import { Building2, ChevronRight, LinkIcon,  Instagram, Facebook, X, Dribbble } 
 // import StarfieldBackground from "@/components/StarField";
 import dynamic from "next/dynamic";
 
-const StarfieldBackground = dynamic(() => import("@/components/StarField"), { ssr: false });
 const LeetCodeIcon = dynamic(() => import("@/components/LeetcodeIcon"), { ssr: false });
 
 export default function Home() {
@@ -19,7 +18,6 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col items-center justify-center p-4">
      {/* <FallingStarsBackground />  */}
-      <StarfieldBackground />
       <main className="max-w-sm w-full">
         {/* Profile Section */}
         <div className="flex flex-col items-center mb-8">
