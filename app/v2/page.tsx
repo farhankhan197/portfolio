@@ -35,7 +35,10 @@ export default function Home(): JSX.Element {
   return (
     <div className="min-h-screen flex flex-col items-center p-6 bg-transparent text-black dark:text-white">
       {/* Navbar */}
-      <nav className="w-full max-w-5xl flex justify-between items-center p-4 mb-6 sticky top-0 z-40 bg-white/60 dark:bg-black/60 backdrop-blur-md rounded-lg shadow-lg">
+      <nav className="w-full max-w-5xl flex justify-between items-center p-4 mb-6 sticky top-0 z-40 
+                bg-white/30 dark:bg-black/30 backdrop-blur-lg border border-white/20 
+                dark:border-black/20 rounded-lg shadow-lg">
+
         <div className="flex items-center gap-4">
           <Image src="/images/profile.jpg" alt="Profile" width={40} height={40} className="rounded-full" />
           <h1 className="text-lg font-semibold">Farhan Khan</h1>

@@ -170,19 +170,3 @@ export default function Home() {
   );
 }
 
-// Add these animations to your global CSS or tailwind.config.js
-// @keyframes float {
-//   0% { transform: translateY(0px); }
-//   50% { transform: translateY(-10px); }
-//   100% { transform: translateY(0px); }
-// }
-// 
-// @keyframes typing {
-//   from { width: 0 }
-//   to { width: 100% }
-// }
-// 
-// @keyframes fade-in-up {
-//   0% { opacity: 0; transform: translateY(20px); }
-//   100% { opacity: 1; transform: translateY(0); }
-// }
