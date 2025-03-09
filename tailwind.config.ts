@@ -9,15 +9,46 @@ export default {
   ],
   theme: {
     extend: {
-      
-      // ... your existing theme extensions
       animation: {
+        'fade-in': 'fadeIn 0.8s ease-in-out forwards',
+        // 'typing': 'typing 3.5s steps(30, end), blink-caret 0.75s step-end infinite',
+        'gradient': 'gradient 8s ease infinite',
+        'width': 'width 1s ease-out forwards',
+        'ping': 'ping 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'float': 'float 6s ease-in-out infinite',
         'typing': 'typing 3.5s steps(30, end)',
         'fade-in-up': 'fade-in-up 0.6s ease-out forwards',
         'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
+     
+      backgroundSize: {
+        '300%': '300%',
+      },
+      
+      // ... your existing theme extensions
+      
       keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+       
+        'blink-caret': {
+          'from, to': { borderColor: 'transparent' },
+          '50%': { borderColor: 'currentColor' },
+        },
+        gradient: {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+        },
+        width: {
+          '0%': { width: '0' },
+          '100%': { width: '100%' },
+        },
+        ping: {
+          '0%': { transform: 'scale(1)', opacity: '1' },
+          '75%, 100%': { transform: 'scale(2)', opacity: '0' },
+        },
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-10px)' },
