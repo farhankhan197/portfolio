@@ -19,9 +19,9 @@ const StarfieldBackground = () => {
     let canvasHeight = window.innerHeight;
     let centerX = canvasWidth * 0.5;
     let centerY = canvasHeight * 0.5;
-    let numberOfStars = 500;
+    let numberOfStars = 15; // Extremely minimal number of stars
     let stars: Star[] = [];
-    let framesPerSecond = 60;
+    let framesPerSecond = 30; // Reduced from 60 to 30 fps
     let interval = Math.floor(1000 / framesPerSecond);
     let previousTime = performance.now();
     let bgColor = theme === "dark" ? "#111" : "#f0f0f0"; // Dynamic background color
@@ -37,8 +37,8 @@ const StarfieldBackground = () => {
         this.x = getRandomInt(-centerX, centerX);
         this.y = getRandomInt(-centerY, centerY);
         this.counter = getRandomInt(1, canvasWidth);
-        this.radiusMax = 1 + Math.random() * 10;
-        this.speed = getRandomInt(1, 5);
+        this.radiusMax = (0.01 + Math.random() )* 0.000001; // Drastically reduced radius (max 0.2)
+        this.speed = getRandomInt(0.0000001, 0.00000002); // Extremely slow movement
       }
 
       drawStar() {
@@ -49,8 +49,8 @@ const StarfieldBackground = () => {
           this.counter = canvasWidth;
           this.x = getRandomInt(-centerX, centerX);
           this.y = getRandomInt(-centerY, centerY);
-          this.radiusMax = getRandomInt(1, 10);
-          this.speed = getRandomInt(1, 5);
+          this.radiusMax = (0.01 + Math.random()) * 0.01; // Tiny radius
+          this.speed = getRandomInt(0.01, 0.05); // Very slow movement
         }
 
         const xRatio = this.x / this.counter;
@@ -62,7 +62,7 @@ const StarfieldBackground = () => {
         ctx.beginPath();
         ctx.arc(starX, starY, radius, 0, Math.PI * 2, false);
         ctx.closePath();
-        ctx.fillStyle = theme === "dark" ? "#fff" : "#000"; // Star color adapts to theme
+        ctx.fillStyle = theme === "dark" ? "rgba(255, 255, 255, 0.2)" : "rgba(0, 0, 0, 0.1)"; // Very low opacity
         ctx.fill();
       }
     }

@@ -19,7 +19,7 @@ const StarfieldBackground = () => {
     let canvasHeight = window.innerHeight;
     let centerX = canvasWidth * 0.5;
     let centerY = canvasHeight * 0.5;
-    let numberOfStars = 500;
+    let numberOfStars = 100;
     let stars: Star[] = [];
     let framesPerSecond = 60;
     let interval = Math.floor(1000 / framesPerSecond);
@@ -37,8 +37,8 @@ const StarfieldBackground = () => {
         this.x = getRandomInt(-centerX, centerX);
         this.y = getRandomInt(-centerY, centerY);
         this.counter = getRandomInt(1, canvasWidth);
-        this.radiusMax = 1 + Math.random() * 10;
-        this.speed = getRandomInt(1, 5);
+        this.radiusMax = 1 + Math.random() * 0.01;
+        this.speed = getRandomInt(0.1, 0.2);
       }
 
       drawStar() {
