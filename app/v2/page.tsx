@@ -33,7 +33,7 @@ export default function Home(): JSX.Element {
   const toggleMenu = (): void => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <div className="min-h-screen flex flex-col items-center p-6 bg-gray-50 dark:bg-gradient-to-b dark:from-gray-900 dark:to-black text-gray-900 dark:text-white">
+    <div className="min-h-screen flex flex-col items-center p-6 bg-gray-50 dark:bg-gradient-to-b dark:from-gray-900 dark:to-black dark:bg-opacity-50 text-gray-900 dark:text-white">
       {/* Navbar */}
       <nav className="w-full max-w-5xl flex justify-between items-center p-4 mb-6 sticky top-0 z-40 bg-white/80 dark:bg-black/60 backdrop-blur-md rounded-lg shadow-lg">
         <div className="flex items-center gap-4">
