@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { ModeToggle } from "@/components/ModeToggle";
 import Link from "next/link";
-import { useState, useEffect, JSX } from "react";
+import { useState, JSX } from "react";
 import { ChevronRight, LinkIcon, X, Menu } from "lucide-react";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
@@ -33,9 +33,9 @@ export default function Home(): JSX.Element {
   const toggleMenu = (): void => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <div className="min-h-screen flex flex-col items-center p-6 bg-gray-50 dark:bg-gradient-to-b dark:from-gray-900 dark:to-black dark:bg-opacity-50 text-gray-900 dark:text-white">
+    <div className="min-h-screen flex flex-col items-center p-6 bg-transparent text-black dark:text-white">
       {/* Navbar */}
-      <nav className="w-full max-w-5xl flex justify-between items-center p-4 mb-6 sticky top-0 z-40 bg-white/80 dark:bg-black/60 backdrop-blur-md rounded-lg shadow-lg">
+      <nav className="w-full max-w-5xl flex justify-between items-center p-4 mb-6 sticky top-0 z-40 bg-white/60 dark:bg-black/60 backdrop-blur-md rounded-lg shadow-lg">
         <div className="flex items-center gap-4">
           <Image src="/images/profile.jpg" alt="Profile" width={40} height={40} className="rounded-full" />
           <h1 className="text-lg font-semibold">Farhan Khan</h1>
@@ -67,10 +67,10 @@ export default function Home(): JSX.Element {
         { id: "skills", title: "Technical Skills", content: "Proficient in JavaScript, TypeScript, React, Next.js, and Node.js." },
         { id: "contact", title: "Available for work", content: "I am currently open for freelance and full-time opportunities." },
       ].map((section) => (
-        <motion.section key={section.id} id={section.id} className="w-full max-w-3xl mb-6 p-6 bg-white dark:bg-gray-800/70 backdrop-blur-lg rounded-xl shadow-md"
+        <motion.section key={section.id} id={section.id} className="w-full max-w-3xl mb-6 p-6 bg-transparent backdrop-blur-lg rounded-xl shadow-md"
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}>
-          <h2 className="text-xl font-semibold mb-3">{section.title}</h2>
-          <p className="text-gray-700 dark:text-gray-300">{section.content}</p>
+          <h2 className="text-xl font-semibold mb-3 text-black dark:text-white">{section.title}</h2>
+          <p className="text-gray-800 dark:text-gray-300">{section.content}</p>
         </motion.section>
       ))}
 
@@ -78,7 +78,7 @@ export default function Home(): JSX.Element {
       <motion.div className="flex gap-4 mt-6"
         initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.4 }}>
         {socialLinks.map((link) => (
-          <Link key={link.name} href={link.url} className="p-3 bg-gray-200 dark:bg-gray-700 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 transition">
+          <Link key={link.name} href={link.url} className="p-3 bg-gray-300 dark:bg-gray-700 rounded-full hover:bg-gray-400 dark:hover:bg-gray-600 transition">
             {link.icon}
           </Link>
         ))}
