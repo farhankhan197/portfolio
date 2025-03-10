@@ -117,7 +117,7 @@ export default function Home(): JSX.Element {
         <Image
           src="/images/photo.jpg"
           alt="Profile"
-          width={300}
+          width={200}
           height={0}          
           className="h-auto m-4 flex items-center justify-center rounded-full"
         />
@@ -136,7 +136,7 @@ export default function Home(): JSX.Element {
         </p>
       </motion.div>
       <motion.div
-        className="flex gap-auto max-w-1/2 items-center justify-center"
+        className="flex gap-4 max-w-1/2 items-center justify-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.4 }}
@@ -145,7 +145,7 @@ export default function Home(): JSX.Element {
           <Link
             key={link.name}
             href={link.url}
-            className="p-3  bg-gray-300 dark:bg-gray-700 rounded-full hover:bg-gray-400 dark:hover:bg-gray-600 transition"
+            className="p-3 bg-gray-300 dark:bg-gray-700 rounded-full hover:bg-gray-400 dark:hover:bg-gray-600 transition"
           >
             {link.icon}
           </Link>
