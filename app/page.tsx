@@ -4,6 +4,7 @@ import { ModeToggle } from "@/components/ModeToggle";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import TwitterIcon from "@/components/TwitterIcon";
+import UseRouter from "next/router";
 import { Building2, ChevronRight, LinkIcon, Instagram, Facebook, X, Dribbble } from 'lucide-react'
 
 // Commented out but available for use
@@ -17,11 +18,19 @@ export default function Home() {
   const [showSocials, setShowSocials] = useState(false);
   const [isAvailable, setIsAvailable] = useState(true);
   const [mounted, setMounted] = useState(false);
+  const router = UseRouter;
 
   // Fade-in effect when page loads
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  const load = (path:string) => {
+    setTimeout(() => {
+      router.push(path);
+    }, 1000); // 1s delay before navigating
+  };
+
 
   return (
     <div className="min-h-screen text-foreground flex flex-col items-center justify-center p-4">
@@ -59,8 +68,8 @@ export default function Home() {
           <h2 className="text-sm text-muted-foreground mb-4 font-semibold">MENU</h2>
           <ul className="space-y-3">
             {[
-              { name: "About", href: "/About" },
-              { name: "Projects", href: "/Projects" },
+              { name: "About", href: "/v2" },
+              { name: "Projects", href: "/v2" },
               { name: "Skills", href: "/Skills" },
               { name: "Contact", href: "/Contact" },
             ].map((item, index) => (
