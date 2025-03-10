@@ -136,7 +136,7 @@ export default function Home(): JSX.Element {
         </p>
       </motion.div>
       <motion.div
-        className="flex gap-4 w-full max-w-xs sm:max-w-xs md:max-w-lg items-center justify-center px-4"
+        className="flex gap-4 w-full max-w-xl sm:max-w-sm md:max-w-lg items-center justify-center px-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.4 }}
