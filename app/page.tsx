@@ -136,7 +136,7 @@ export default function Home(): JSX.Element {
         </p>
       </motion.div>
       <motion.div
-        className="flex gap-4 w-full max-w-xs sm:max-w-md md:max-w-lg items-center justify-center"
+        className="flex gap-4 w-full max-w-xs sm:max-w-xs md:max-w-lg items-center justify-center px-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.4 }}
@@ -145,7 +145,7 @@ export default function Home(): JSX.Element {
           <Link
             key={link.name}
             href={link.url}
-            className="p-3 bg-gray-300 dark:bg-gray-700 rounded-full hover:bg-gray-400 dark:hover:bg-gray-600 transition"
+            className="bg-gray-300 dark:bg-white rounded-full hover:bg-gray-400 dark:hover:bg-gray-600 transition"
           >
             {link.icon}
           </Link>
