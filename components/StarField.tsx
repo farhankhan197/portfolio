@@ -46,7 +46,7 @@ const StarfieldBackground = () => {
       } else {
         this.angle = Math.random() * Math.PI * 2;
         this.distance = Math.pow(Math.random(), 0.5);
-        this.speed = 0.001 + Math.random() * 0.003;
+        this.speed = 0.0005 + Math.random() * 0.001;
         this.maxRadius = 1 + Math.random() * 2;
       }
 
@@ -108,7 +108,7 @@ const StarfieldBackground = () => {
 
   function setup() {
     if (stars.length === 0) {
-      stars = Array.from({ length: 100 }, () => new Star());
+      stars = Array.from({ length: 10}, () => new Star());
     } else {
       stars = stars.map((existingStar) => new Star(existingStar));
     }
