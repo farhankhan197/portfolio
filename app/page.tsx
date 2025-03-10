@@ -114,13 +114,13 @@ export default function Home(): JSX.Element {
       >
         <p className="text-gray-600 dark:text-gray-400  ">Hey there, i'm</p>
         <div className="flex items-center justify-center">
-        <Image
-          src="/images/photo.jpg"
-          alt="Profile"
-          width={200}
-          height={0}          
-          className="h-auto m-4 flex items-center justify-center rounded-full"
-        />
+          <Image
+            src="/images/photo.jpg"
+            alt="Profile"
+            width={200}
+            height={0}
+            className="h-auto m-4 flex items-center justify-center rounded-full"
+          />
         </div>
         <h1 className="text-3xl font-extrabold">Farhan Khan</h1>
         <p className="text-gray-600 flex flex-start dark:text-gray-400 mt-2 text-lg text-left p-4">
@@ -152,7 +152,7 @@ export default function Home(): JSX.Element {
         ))}
       </motion.div>
       <button className="inline m-4 flex items-center gap-2 bg-green-100 dark:bg-green-800 text-green-800 dark:text-green-400 px-3 py-1 rounded-full text-sm font-medium hover:bg-green-200 dark:hover:bg-green-700 transition-colors whitespace-nowrap">
-        <span className="relative flex h-3 w-3">
+        <span className="relative flex h-3 w-3 items-center justify-center">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
           <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
         </span>
