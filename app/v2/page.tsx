@@ -59,7 +59,7 @@ export default function Home(): JSX.Element {
       </nav>
 
       {/* Hero Section */}
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="text-center mb-10">
+      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.5}} className="text-center mb-10">
         <h1 className="text-5xl font-extrabold">Farhan Khan</h1>
         <p className="text-gray-600 dark:text-gray-400 mt-2 text-lg">Software Engineer</p>
       </motion.div>
@@ -71,7 +71,7 @@ export default function Home(): JSX.Element {
         { id: "contact", title: "Available for work", content: "I am currently open for freelance and full-time opportunities." },
       ].map((section) => (
         <motion.section key={section.id} id={section.id} className="w-full max-w-3xl mb-6 p-6 bg-transparent backdrop-blur-lg rounded-xl shadow-md"
-          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}>
+          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.5 }}>
           <h2 className="text-xl font-semibold mb-3 text-black dark:text-white">{section.title}</h2>
           <p className="text-gray-800 dark:text-gray-300">{section.content}</p>
         </motion.section>
@@ -79,7 +79,7 @@ export default function Home(): JSX.Element {
 
       {/* Social Links */}
       <motion.div className="flex gap-4 mt-6"
-        initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.4 }}>
+        initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 0.5 }}>
         {socialLinks.map((link) => (
           <Link key={link.name} href={link.url} className="p-3 bg-gray-300 dark:bg-gray-700 rounded-full hover:bg-gray-400 dark:hover:bg-gray-600 transition">
             {link.icon}
