@@ -37,7 +37,7 @@ const StarfieldBackground = () => {
         this.x = getRandomInt(-centerX, centerX);
         this.y = getRandomInt(-centerY, centerY);
         this.counter = getRandomInt(1, canvasWidth);
-        this.radiusMax = (0.01 + Math.random() )* 0.000001; // Drastically reduced radius (max 0.2)
+        this.radiusMax = (0.01 + Math.random()) * 0.000001; // Drastically reduced radius (max 0.2)
         this.speed = getRandomInt(0.0000001, 0.00000002); // Extremely slow movement
       }
 
@@ -62,7 +62,8 @@ const StarfieldBackground = () => {
         ctx.beginPath();
         ctx.arc(starX, starY, radius, 0, Math.PI * 2, false);
         ctx.closePath();
-        ctx.fillStyle = theme === "dark" ? "rgba(255, 255, 255, 0.2)" : "rgba(0, 0, 0, 0.1)"; // Very low opacity
+        ctx.fillStyle =
+          theme === "dark" ? "rgba(255, 255, 255, 0.2)" : "rgba(0, 0, 0, 0.1)"; // Very low opacity
         ctx.fill();
       }
     }
@@ -111,7 +112,13 @@ const StarfieldBackground = () => {
       return Math.floor(Math.random() * (max - min + 1) + min);
     }
 
-    function remap(value: number, from1: number, to1: number, from2: number, to2: number) {
+    function remap(
+      value: number,
+      from1: number,
+      to1: number,
+      from2: number,
+      to2: number
+    ) {
       return from2 + ((value - from1) * (to2 - from2)) / (to1 - from1);
     }
 

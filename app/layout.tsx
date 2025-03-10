@@ -26,9 +26,9 @@ export default function RootLayout({
 }>) {
   return (
     <>
-      <html lang="en" suppressHydrationWarning > 
+      <html lang="en" suppressHydrationWarning>
         <head />
-        <body className={GeistMono.className} >
+        <body className={GeistMono.className}>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"

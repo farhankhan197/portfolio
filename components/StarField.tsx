@@ -5,7 +5,7 @@ import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
 
 const StarfieldBackground = () => {
-  if(typeof window === "undefined") return null;
+  if (typeof window === "undefined") return null;
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { theme } = useTheme();
   const router = useRouter();
@@ -92,7 +92,9 @@ const StarfieldBackground = () => {
           ctx.moveTo(startPoint.x, startPoint.y);
           ctx.lineTo(endPoint.x, endPoint.y);
           ctx.strokeStyle =
-            theme === "dark" ? `rgba(255, 255, 255, ${opacity})` : `rgba(0, 0, 0, ${opacity})`;
+            theme === "dark"
+              ? `rgba(255, 255, 255, ${opacity})`
+              : `rgba(0, 0, 0, ${opacity})`;
           ctx.lineWidth = radius * 0.8 * (1 - i / this.trail.length);
           ctx.stroke();
         }
@@ -185,7 +187,8 @@ const StarfieldBackground = () => {
 
     return () => {
       window.removeEventListener("resize", resizeCanvas);
-      if (animationFrameId.current) cancelAnimationFrame(animationFrameId.current);
+      if (animationFrameId.current)
+        cancelAnimationFrame(animationFrameId.current);
     };
   }, [theme]);
 
@@ -212,12 +215,23 @@ const StarfieldBackground = () => {
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="fixed top-0 left-0 w-full h-full pointer-events-none" style={{ zIndex: -1 }} />;
+  return (
+    <canvas
+      ref={canvasRef}
+      className="fixed top-0 left-0 w-full h-full pointer-events-none"
+      style={{ zIndex: -1 }}
+    />
+  );
 };
 
-function remap(value: number, from1: number, to1: number, from2: number, to2: number) {
+function remap(
+  value: number,
+  from1: number,
+  to1: number,
+  from2: number,
+  to2: number
+) {
   return from2 + ((value - from1) * (to2 - from2)) / (to1 - from1);
 }
 
 export default StarfieldBackground;
-
