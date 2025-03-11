@@ -99,7 +99,7 @@ export default function Navbar() {
             initial={{
               height: "0px",
               width: "calc(100% - 3rem)",
-              maxWidth: "calc(100% - 3rem)", // Prevents space on the right
+              maxWidth: "calc(100% - 3rem)",
               top: "50px",
               left: "50%",
               translateX: "-50%",
@@ -108,7 +108,7 @@ export default function Navbar() {
             animate={{
               height: "100vh",
               width: "100vw",
-              maxWidth: "100vw", // Smooth transition into fullscreen
+              maxWidth: "100vw",
               borderRadius: "0px",
               top: "0px",
               left: "0px",
@@ -132,7 +132,7 @@ export default function Navbar() {
               transformOrigin: "top center",
               border: "2px solid rgba(255, 255, 255, 0.1)",
               overflow: "hidden",
-              left: "1.5rem", // Prevents space to the right
+              left: "1.5rem",
               maxWidth: "calc(100% - 3rem)",
             }}
           >
