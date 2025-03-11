@@ -42,10 +42,10 @@ export default function Navbar() {
       initial={{ y: -30, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeInOut" }}
-      className={`fixed left-0 right-0 flex justify-center z-40 transition-all duration-500 ease-in-out transform ${
+      className={`fixed left-0 right-0 flex justify-center z-40 transition-all duration-500 ease-in-out ${
         isScrolled
-          ? "top-0 scale-100 px-8 py-4 bg-white dark:bg-[#0d0d0d] shadow-md"
-          : "top-5 scale-95 max-w-5xl px-6 py-4 mx-6 bg-white dark:bg-[#0d0d0d] rounded-lg"
+          ? "top-0 w-full px-8 py-4 bg-white dark:bg-[#0d0d0d] shadow-md"
+          : "top-5 max-w-5xl px-6 py-4 mx-6 bg-white dark:bg-[#0d0d0d] rounded-lg shadow-lg"
       }`}
     >
       <div className="flex justify-between items-center w-full max-w-6xl mx-auto">
@@ -99,18 +99,22 @@ export default function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
+            exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="fixed inset-0 bg-white dark:bg-[#0d0d0d] flex flex-col items-center justify-center z-50 border border-gray-300 dark:border-gray-700 rounded-lg shadow-lg"
+            className="fixed inset-0 bg-white dark:bg-[#0d0d0d] flex flex-col items-center justify-center z-50 border border-gray-300 dark:border-gray-700 shadow-2xl rounded-xl"
+            style={{
+              border: "2px solid rgba(255, 255, 255, 0.1)",
+              transformOrigin: "top center",
+            }}
           >
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.path}
                 onClick={handleCloseMenu}
-                className="text-lg font-medium text-black dark:text-white mb-4 hover:underline"
+                className="text-lg font-medium text-black dark:text-white mb-6 hover:underline"
               >
                 {item.name}
               </Link>
