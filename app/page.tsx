@@ -153,7 +153,7 @@ export default function Home(): JSX.Element {
     <>
       <div className="min-h-screen flex flex-col items-center p-6 bg-transparent text-black dark:text-white">
         {/* Navigation Bar - Dropdown Menu */}
-        <nav className="w-full max-w-5xl flex justify-between items-center p-4 mb-6 sticky top-0 z-40 bg-white dark:bg-zinc-950 border border-white/20 dark:border-black/20 rounded-lg shadow-lg">
+        <nav className="w-full max-w-5xl flex justify-between items-center p-4 mb-6 fixed top-0 z-40 bg-white dark:bg-zinc-950 border border-white/20 dark:border-black/20 rounded-lg shadow-lg">
           <div className="flex items-center gap-4">
             <h1 className="text-md font-semibold shining-text">Starfield</h1>
           </div>
