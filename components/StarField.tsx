@@ -17,7 +17,6 @@ const StarfieldBackground = () => {
   let stars: Star[] = [];
   let bgColor = theme === "dark" ? "#111" : "#f0f0f0";
 
-  // Warp effect variables
   let warpFactor = 1;
   const maxWarpFactor = 8;
   const warpAcceleration = 0.2;
@@ -172,7 +171,7 @@ const StarfieldBackground = () => {
     easeOutSlowdown();
   }
 
-  // ✅ Listen for click and hold events
+  // ✅ Separate handlers to fix TypeScript issue
   useEffect(() => {
     const handleMouseDown = (e: MouseEvent) => {
       if (e.target instanceof HTMLElement && e.target.closest("[data-content]")) {
@@ -181,20 +180,21 @@ const StarfieldBackground = () => {
       startWarp();
     };
 
-    const handleMouseUp = () => {
-      stopWarp();
-    };
+    const handleMouseUp = () => stopWarp();
+
+    const handleTouchStart = (e: TouchEvent) => startWarp();
+    const handleTouchEnd = () => stopWarp();
 
     document.addEventListener("mousedown", handleMouseDown);
     document.addEventListener("mouseup", handleMouseUp);
-    document.addEventListener("touchstart", handleMouseDown);
-    document.addEventListener("touchend", handleMouseUp);
+    document.addEventListener("touchstart", handleTouchStart);
+    document.addEventListener("touchend", handleTouchEnd);
 
     return () => {
       document.removeEventListener("mousedown", handleMouseDown);
       document.removeEventListener("mouseup", handleMouseUp);
-      document.removeEventListener("touchstart", handleMouseDown);
-      document.removeEventListener("touchend", handleMouseUp);
+      document.removeEventListener("touchstart", handleTouchStart);
+      document.removeEventListener("touchend", handleTouchEnd);
     };
   }, []);
 
