@@ -300,14 +300,14 @@ export default function Home(): JSX.Element {
 
           {/* Project Details */}
           <div className="mt-4">
-            <Link href={project.url} className="hover:underline">
-              <p className="dark:text-white text-lg font-medium">
+            <Link href={project.url} className="">
+              <p className="dark:text-white text-lg hover:underline font-medium">
                 {project.title}
               </p>
               {project.techStack && (
                 <div className="flex gap-2">
                   {project.techStack.map((tech) => (
-                    <p key={tech} className="text-xs dark:bg-gray-400 light:bg-gray:700 rounded-sm text-gray-400">
+                    <p key={tech} className="text-xs dark:bg-gray-200 light:bg-gray-700 rounded-sm text-gray-400">
                       {tech}
                     </p>
                   ))}
