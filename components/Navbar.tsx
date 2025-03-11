@@ -236,7 +236,7 @@ export default function Navbar() {
                   <Link
                     href={item.path}
                     onClick={() => setIsOpen(false)}
-                    className="text-lg font-medium text-black dark:text-white hover:underline px-4 py-2"
+                    className="text-lg font-medium text-black dark:text-white hover:underline px-4 py-4"
                   >
                     {item.name}
                   </Link>
