@@ -75,7 +75,7 @@ export default function Home(): JSX.Element {
       description: "A Next.js template for personal portfolios.",
       url: "",
       image: "/images/starfield.png",
-      techStack: ["Next.js", "TypeScript", "Tailwind CSS"],
+      techStack: [" Next.js ", " TypeScript ", " Tailwind CSS "],
 
     },
     {
@@ -83,7 +83,7 @@ export default function Home(): JSX.Element {
       description: "A Next.js template for personal portfolios.",
       url: "",
       image: "/images/profile.jpg",
-      techStack: ["Next.js", "TypeScript", "Tailwind CSS"],
+      techStack: [" Next.js ", " TypeScript " , " Tailwind CSS "],
     },
   ];
   const workExperience: WorkExperience[] = [
@@ -301,7 +301,7 @@ export default function Home(): JSX.Element {
                 <div className="flex gap-2">
                   {project.techStack.map((tech) => (
                     <p key={tech} className="text-xs dark:bg-gray-200 dark:text-black text-white bg-gray-800 rounded-sm">
-                     " "+ {tech}+" "
+                      {tech}
                     </p>
                   ))}
                 </div>
