@@ -34,96 +34,97 @@ export default function Navbar() {
   };
 
   return (
-    <motion.div
-      initial={{ y: -30, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: "easeInOut" }}
-      className={`fixed left-0 right-0 flex justify-center z-40 transition-all duration-500 ease-in-out ${
-        isScrolled
-          ? "top-0 w-full px-8 py-4 bg-white dark:bg-[#0d0d0d] shadow-md"
-          : "top-5 max-w-5xl px-6 py-4 mx-6 bg-white dark:bg-[#0d0d0d] rounded-lg shadow-lg"
-      }`}
-    >
-      <div className="flex justify-between items-center w-full max-w-6xl mx-auto">
-        <motion.h1
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-md font-semibold text-black dark:text-white shining-text"
-        >
-          Starfield
-        </motion.h1>
+    <>
+      {/* Fixed Navbar */}
+      <motion.div
+        initial={{ y: -30, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
+        className={`fixed left-0 right-0 flex justify-center z-40 transition-all duration-500 ease-in-out ${
+          isScrolled
+            ? "top-0 w-full px-8 py-4 bg-white dark:bg-[#0d0d0d] shadow-md"
+            : "top-5 max-w-5xl px-6 py-4 mx-6 bg-white dark:bg-[#0d0d0d] rounded-lg shadow-lg"
+        }`}
+        style={{ zIndex: 50 }} // Keep navbar untouched
+      >
+        <div className="flex justify-between items-center w-full max-w-6xl mx-auto">
+          <motion.h1
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-md font-semibold text-black dark:text-white shining-text"
+          >
+            Starfield
+          </motion.h1>
 
-        <motion.div
-          className="hidden md:flex space-x-6"
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              href={item.path}
-              className="hover:text-gray-600 dark:hover:text-gray-300 hover:underline transition-colors text-sm font-medium text-black dark:text-white"
-            >
-              {item.name}
-            </Link>
-          ))}
-        </motion.div>
+          <motion.div
+            className="hidden md:flex space-x-6"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                href={item.path}
+                className="hover:text-gray-600 dark:hover:text-gray-300 hover:underline transition-colors text-sm font-medium text-black dark:text-white"
+              >
+                {item.name}
+              </Link>
+            ))}
+          </motion.div>
 
-        <motion.div
-          className="flex items-center gap-4"
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-        >
-          <ModeToggle />
-          <button onClick={handleToggleMenu} className="md:hidden">
-            {isOpen ? (
-              <X className="h-6 w-6 text-black dark:text-white" />
-            ) : (
-              <Menu className="h-6 w-6 text-black dark:text-white" />
-            )}
-          </button>
-        </motion.div>
-      </div>
+          <motion.div
+            className="flex items-center gap-4"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            <ModeToggle />
+            <button onClick={handleToggleMenu} className="md:hidden">
+              {isOpen ? (
+                <X className="h-6 w-6 text-black dark:text-white" />
+              ) : (
+                <Menu className="h-6 w-6 text-black dark:text-white" />
+              )}
+            </button>
+          </motion.div>
+        </div>
+      </motion.div>
 
-      {/* Dynamic Island Expanding Dropdown */}
+      {/* Dynamic Island Dropdown Expanding from Navbar */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{
-              height: "50px",
+              height: "0px",
               width: "100%",
+              top: "50px",
               borderRadius: "12px",
             }}
             animate={{
               height: "100vh",
               width: "100vw",
               borderRadius: "0px",
+              top: "0px",
             }}
             exit={{
-              height: "50px",
+              height: "0px",
               width: "100%",
               borderRadius: "12px",
+              top: "50px",
             }}
             transition={{
               duration: 0.6,
               ease: [0.4, 0.0, 0.2, 1], // Smooth elastic effect
             }}
-            className="absolute top-0 left-0 right-0 bg-white dark:bg-[#0d0d0d] flex flex-col items-center justify-center z-50 shadow-2xl"
+            className="fixed left-0 right-0 bg-white dark:bg-[#0d0d0d] flex flex-col items-center justify-center z-30 shadow-2xl"
             style={{
               transformOrigin: "top center",
               border: "2px solid rgba(255, 255, 255, 0.1)",
               overflow: "hidden",
             }}
           >
-            <button
-              onClick={() => setIsOpen(false)}
-              className="absolute top-6 right-6 text-black dark:text-white"
-            >
-              <X className="h-6 w-6" />
-            </button>
             {navItems.map((item) => (
               <Link
                 key={item.name}
@@ -134,9 +135,16 @@ export default function Navbar() {
                 {item.name}
               </Link>
             ))}
+
+            <button
+              onClick={() => setIsOpen(false)}
+              className="absolute top-6 right-6 text-black dark:text-white"
+            >
+              <X className="h-6 w-6" />
+            </button>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.div>
+    </>
   );
 }
