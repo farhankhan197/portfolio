@@ -44,7 +44,7 @@ export default function Navbar() {
             ? `top-0 scale-100 px-8 py-4 bg-white dark:bg-[#0d0d0d] ${
                 isOpen ? "shadow-none" : "shadow-md dark:shadow-[0_10px_30px_rgba(255,255,255,0.1)]"
               } rounded-none`
-            : `top-5 scale-95 max-w-5xl px-6 py-4 mx-6 bg-white dark:bg-[#0d0d0d] ${
+            : `top-0 scale-95 max-w-5xl px-6 py-4 mx-6 bg-white dark:bg-[#0d0d0d] ${
                 isOpen ? "shadow-none" : "shadow-lg dark:shadow-[0_20px_40px_rgba(255,255,255,0.1)]"
               } rounded-lg`
         }`}
