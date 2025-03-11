@@ -107,7 +107,7 @@ const StarfieldBackground = () => {
 
   function setup() {
     if (stars.length === 0) {
-      stars = Array.from({ length: 8 }, () => new Star());
+      stars = Array.from({ length: 4}, () => new Star());
     } else {
       stars = stars.map((existingStar) => new Star(existingStar));
     }
