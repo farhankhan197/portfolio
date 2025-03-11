@@ -15,6 +15,11 @@ const LeetCodeIcon = dynamic(() => import("@/components/LeetcodeIcon"), {
   ssr: false,
 });
 
+interface Skills {
+  name: string;
+  icon: JSX.Element;
+}
+
 type NavItem = { name: string; path: string };
 interface SocialLink {
   name: string;
@@ -30,6 +35,14 @@ interface WorkExperience {
   url: string;
 }
 
+interface Project {
+  title: string;
+  description: string;
+  url: string;
+  image: string;
+  techStack?: string[];
+}
+
 export default function Home(): JSX.Element {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
@@ -40,6 +53,39 @@ export default function Home(): JSX.Element {
     { name: "Contact", path: "#contact" },
   ];
 
+  const skills:Skills[] =[
+    {
+      name:"typescript",
+      icon:<GithubIcon className="h-5 w-5"/>
+    },
+    {
+      name:"typescript",
+      icon:<GithubIcon className="h-5 w-5"/>
+
+    },
+    {
+      name:"typescript",
+      icon:<GithubIcon className
+      ="h-5 w-5"/>
+    },
+  ] 
+  const Projects: Project[] = [
+    {
+      title: "Starfield",
+      description: "A Next.js template for personal portfolios.",
+      url: "",
+      image: "/images/starfield.png",
+      techStack: ["Next.js", "TypeScript", "Tailwind CSS"],
+
+    },
+    {
+      title: "Starfield",
+      description: "A Next.js template for personal portfolios.",
+      url: "",
+      image: "/images/profile.jpg",
+      techStack: ["Next.js", "TypeScript", "Tailwind CSS"],
+    },
+  ];
   const workExperience: WorkExperience[] = [
     {
       company: "The Catchy Pixel",
@@ -162,7 +208,7 @@ export default function Home(): JSX.Element {
           />
         </div>
         <h1 className="text-3xl font-extrabold">Farhan Khan</h1>
-        <p className=" text-left w-full max-w-3xl mb-6 p-6 bg-transparent backdrop-blur-lg rounded-xl shadow-md">
+        <p className=" text-left w-full max-w-3xl p-6 bg-transparent backdrop-blur-lg rounded-xl shadow-md">
           I am a third year CS student, Passionate Full-Stack Developer and
           Machine Learning Engineer with expertise in building high-performance
           web applications and AI-driven solutions.
@@ -200,7 +246,7 @@ export default function Home(): JSX.Element {
       </button>
 
       {/* Sections */}
-      <h1 className="text-2xl font-semibold mb-3 mx-2 text-black dark:text-white">
+      <h1 className="text-2xl font-semibold mt-8 mb-3 mx-2 text-black dark:text-white">
         Work Experience
       </h1>
       {workExperience.map((experience) => (
@@ -235,42 +281,62 @@ export default function Home(): JSX.Element {
         </section>
       ))}
 
-      {[
-        {
-          id: "about",
-          title: "About Me",
-          content:
-            "I am a passionate software engineer with experience in modern web development.",
-        },
-        {
-          id: "skills",
-          title: "Technical Skills",
-          content:
-            "Proficient in JavaScript, TypeScript, React, Next.js, and Node.js.",
-        },
-        {
-          id: "contact",
-          title: "Available for work",
-          content:
-            "I am currently open for freelance and full-time opportunities.",
-        },
-      ].map((section) => (
-        <motion.section
-          key={section.id}
-          id={section.id}
-          className="w-full max-w-3xl mb-6 p-6 bg-transparent backdrop-blur-lg rounded-xl shadow-md"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+      <h1 id="projects" className="text-2xl mt-10 ">Projects</h1>
+      {Projects.map((project) => (
+        <section
+          key={project.title}
+          id="Projects"
+          className="border border-gray-800 w-full max-w-lg m-4 bg-transparent backdrop-blur-lg rounded-xl shadow-md p-4"
         >
-          <h2 className="text-xl font-semibold mb-3 text-black dark:text-white">
-            {section.title}
-          </h2>
-          <p className="text-gray-800 dark:text-gray-300">{section.content}</p>
-        </motion.section>
-      ))}
+          {/* Image Container */}
+          <div className="relative w-full  h-40 rounded-lg overflow-hidden">
+            <Image
+              src={project.image}
+              alt={`${project.title} logo`}
+              fill
+              className="object-cover"
+            />
+          </div>
 
-      {/* Social Links */}
+          {/* Project Details */}
+          <div className="mt-4">
+            <Link href={project.url} className="hover:underline">
+              <p className="dark:text-white text-lg font-medium">
+                {project.title}
+              </p>
+              {project.techStack && (
+                <div className="flex gap-2">
+                  {project.techStack.map((tech) => (
+                    <p key={tech} className="text-xs dark:bg-gray-200 light:bg-gray:700 p-2 rounded-sm text-gray-400">
+                      {tech}
+                    </p>
+                  ))}
+                </div>
+              )}
+            </Link>
+            <p className="text-sm font-semibold text-gray-300">
+              {project.description}
+            </p>
+            <div className="flex gap-4 mt-4">
+              <Link href=""><GithubIcon/></Link>
+              <Link href=""><LinkIcon className="rotate-0 hover:rotate-45 transition-transform duration-200"/></Link>
+            </div>
+          </div>
+        </section>
+      ))}
+      <h1 id="skills" className="text-2xl mt-8 font-semibold mb-3 mx-2 text-black dark:text-white">
+        Skills  </h1>
+        <div className="flex flex-wrap gap-4">
+          {skills.map((skill) => (
+            <div key={skill.name} className="flex items-center gap-2 bg-gray-300 dark:bg-gray-800 rounded-full p-2">
+              {skill.icon}
+              <p>{skill.name}</p>
+            </div>
+          ))} 
+          </div>
+
+          <p className="mt-10"> made with &#x2764;&#xfe0f; b Farhan.</p> 
+      
     </div>
   );
 }
