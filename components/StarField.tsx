@@ -19,12 +19,14 @@ const StarfieldBackground = () => {
   let stars: Star[] = [];
   let bgColor = theme === "dark" ? "#111" : "#f0f0f0";
 
+  // Warp effect variables
   let warpFactor = 1;
   const maxWarpFactor = 8;
   const warpAcceleration = 0.2;
   const slowdownDuration = 80;
   let slowdownProgress = 0;
   let isSlowingDown = false;
+  let isMouseHeld = false;
 
   class Star {
     normalizedX: number;
@@ -109,7 +111,7 @@ const StarfieldBackground = () => {
 
   function setup() {
     if (stars.length === 0) {
-      stars = Array.from({ length: 20 }, () => new Star());
+      stars = Array.from({ length: 200 }, () => new Star());
     } else {
       stars = stars.map((existingStar) => new Star(existingStar));
     }
@@ -150,9 +152,21 @@ const StarfieldBackground = () => {
   function startWarp() {
     setIsWarping(true);
     isSlowingDown = false;
+    isMouseHeld = true;
+
+    const increaseWarp = () => {
+      if (!isMouseHeld) return;
+      if (warpFactor < maxWarpFactor) {
+        warpFactor += warpAcceleration;
+      }
+      requestAnimationFrame(increaseWarp);
+    };
+
+    increaseWarp();
   }
 
   function stopWarp() {
+    isMouseHeld = false;
     slowdownProgress = 0;
     isSlowingDown = true;
 
@@ -162,10 +176,6 @@ const StarfieldBackground = () => {
       if (slowdownProgress <= slowdownDuration) {
         const progress = slowdownProgress / slowdownDuration;
         warpFactor = 1 + (maxWarpFactor - 1) * Math.pow(1 - progress, 3);
-
-        if (slowdownProgress > slowdownDuration * 0.8) {
-          warpFactor = 1 + (warpFactor - 1) * 0.9;
-        }
 
         requestAnimationFrame(easeOutSlowdown);
       } else {
@@ -191,23 +201,20 @@ const StarfieldBackground = () => {
   }, [theme]);
 
   useEffect(() => {
-    const handleClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      const isInteractive =
-        target.closest("a, button, input, textarea, select, [role='button'], [data-no-warp]");
-
-      if (!isInteractive) {
-        startWarp();
-        setTimeout(stopWarp, 600);
-      }
+    const handleMouseDown = (e: MouseEvent) => {
+      if ((e.target as HTMLElement).closest("[data-main-content]")) return;
+      startWarp();
     };
 
-    document.addEventListener("mousedown", handleClick);
-    document.addEventListener("mouseup", stopWarp);
+    const handleMouseUp = () => {
+      stopWarp();
+    };
 
+    document.addEventListener("mousedown", handleMouseDown);
+    document.addEventListener("mouseup", handleMouseUp);
     return () => {
-      document.removeEventListener("mousedown", handleClick);
-      document.removeEventListener("mouseup", stopWarp);
+      document.removeEventListener("mousedown", handleMouseDown);
+      document.removeEventListener("mouseup", handleMouseUp);
     };
   }, []);
 
