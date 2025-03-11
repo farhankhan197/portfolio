@@ -95,13 +95,13 @@ export default function Navbar() {
         </motion.div>
       </div>
 
-      {/* Full-Screen Dropdown Menu */}
+      {/* Full-Screen Dynamic Island Dropdown */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
+            initial={{ scaleY: 0, scaleX: 0.4 }}
+            animate={{ scaleY: 1, scaleX: 1 }}
+            exit={{ scaleY: 0, scaleX: 0.4 }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
             className="fixed inset-0 bg-white dark:bg-[#0d0d0d] flex flex-col items-center justify-center z-50 border border-gray-300 dark:border-gray-700 shadow-2xl rounded-xl"
             style={{
@@ -109,6 +109,12 @@ export default function Navbar() {
               transformOrigin: "top center",
             }}
           >
+            <button
+              onClick={handleCloseMenu}
+              className="absolute top-6 right-6 text-black dark:text-white"
+            >
+              <X className="h-6 w-6" />
+            </button>
             {navItems.map((item) => (
               <Link
                 key={item.name}
