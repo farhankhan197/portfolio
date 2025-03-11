@@ -158,7 +158,7 @@ export default function Home(): JSX.Element {
 
       <nav
         className="w-full max-w-5xl flex justify-between items-center p-4 mb-6 sticky top-0 z-40 
-                bg-white dark:bg-gray-900 border border-white/20 
+                bg-white dark:bg-gray-950 border border-white/20 
                 dark:border-black/20 rounded-lg shadow-lg"
       >
         <div className="flex items-center gap-4">
