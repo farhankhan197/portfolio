@@ -107,7 +107,7 @@ const StarfieldBackground = () => {
 
   function setup() {
     if (stars.length === 0) {
-      stars = Array.from({ length: 10 }, () => new Star());
+      stars = Array.from({ length: 100 }, () => new Star());
     } else {
       stars = stars.map((existingStar) => new Star(existingStar));
     }
@@ -148,11 +148,12 @@ const StarfieldBackground = () => {
   function startWarp() {
     setIsWarping(true);
     isSlowingDown = false;
+    warpFactor = maxWarpFactor;
   }
 
   function stopWarp() {
-    slowdownProgress = 0;
     isSlowingDown = true;
+    slowdownProgress = 0;
 
     const easeOutSlowdown = () => {
       slowdownProgress++;
@@ -163,7 +164,6 @@ const StarfieldBackground = () => {
         requestAnimationFrame(easeOutSlowdown);
       } else {
         warpFactor = 1;
-        isSlowingDown = false;
         setIsWarping(false);
       }
     };
@@ -171,18 +171,10 @@ const StarfieldBackground = () => {
     easeOutSlowdown();
   }
 
-  // ✅ Separate handlers to fix TypeScript issue
   useEffect(() => {
-    const handleMouseDown = (e: MouseEvent) => {
-      if (e.target instanceof HTMLElement && e.target.closest("[data-content]")) {
-        return;
-      }
-      startWarp();
-    };
-
+    const handleMouseDown = () => startWarp();
     const handleMouseUp = () => stopWarp();
-
-    const handleTouchStart = (e: TouchEvent) => startWarp();
+    const handleTouchStart = () => startWarp();
     const handleTouchEnd = () => stopWarp();
 
     document.addEventListener("mousedown", handleMouseDown);
