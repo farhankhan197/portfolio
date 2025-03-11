@@ -67,7 +67,7 @@ export default function Home(): JSX.Element {
       logo: "/images/spark_club_logo.jpg",
       jobTitle: "Founder",
       duration: "March 2024 - Present",
-      url :"https://chat.whatsapp.com/L1TnMG7ntdw87JRw6vpovO"
+      url: "https://chat.whatsapp.com/L1TnMG7ntdw87JRw6vpovO",
     },
   ];
 
@@ -204,35 +204,36 @@ export default function Home(): JSX.Element {
         Work Experience
       </h1>
       {workExperience.map((experience) => (
-      <section
-      key = {experience.company}
-        id="Work Experience"
-        className="border border-white w-full max-w-lg m-6 bg-transparent backdrop-blur-lg rounded-xl shadow-md p-4"
-      >
-        <div className="flex justify-between items-center">
-          {/* Left: Logo + Company Name */}
-          <div className="flex items-center gap-3">
+        <section
+          key={experience.company}
+          id="Work Experience"
+          className="border border-gray-800 w-full max-w-lg m-4 bg-transparent backdrop-blur-lg rounded-xl shadow-md p-4"
+        >
+          <div className="flex items-center gap-4">
+            {/* Left: Logo */}
             <Image
               src={experience.logo}
-              alt={experience.company+"logo"}
+              alt={experience.company + " logo"}
               width={50}
               height={50}
               className="rounded-full"
             />
-            <Link href={experience.url} className="hover:underline">
-            <p className="dark:text-white underline text-lg font-medium">
-              {experience.company}
-            </p>
-            </Link>
-          </div>
 
-          {/* Right: Job Title & Duration */}
-          <div className="text-right text-sm text-gray-300">
-            <p className="font-semibold">{experience.jobTitle}</p>
-            <p>{experience.duration}</p>
+            {/* Right: Company Name, Job Title & Duration */}
+            <div className="flex flex-col">
+              <Link href={experience.url} className="hover:underline">
+                <p className="dark:text-white text-lg font-medium">
+                  {experience.company}
+                </p>
+              </Link>
+              <p className="text-sm font-semibold text-gray-300">
+                {experience.jobTitle}
+              </p>
+              <p className="text-sm text-gray-400">{experience.duration}</p>
+            </div>
           </div>
-        </div>
-      </section>))}
+        </section>
+      ))}
 
       {[
         {
