@@ -300,7 +300,7 @@ export default function Home(): JSX.Element {
               {project.techStack && (
                 <div className="flex gap-2">
                   {project.techStack.map((tech) => (
-                    <p key={tech} className="text-xs dark:bg-gray-200 dark:text-black border text-white bg-gray-800">
+                    <p key={tech} className="text-xs dark:bg-gray-200 dark:text-black rounded-sm p-1 text-white bg-gray-800">
                       {tech}
                     </p>
                   ))}
