@@ -158,17 +158,10 @@ export default function Home(): JSX.Element {
 
       <nav
         className="w-full max-w-5xl flex justify-between items-center p-4 mb-6 sticky top-0 z-40 
-                bg-white dark:bg-gray-950 border border-white/20 
+                bg-white dark:bg-zinc-950 border border-white/20 
                 dark:border-black/20 rounded-lg shadow-lg"
       >
         <div className="flex items-center gap-4">
-          {/* <Image
-            src="/images/profile.jpg"
-            alt="Profile"
-            width={40}
-            height={40}
-            className="rounded-full"
-          /> */}
           <h1 className="text-md font-semibold shining-text">Starfield</h1>
         </div>
         <div className="hidden absolute left-1/2 transform -translate-x-1/2  md:flex space-x-4">
