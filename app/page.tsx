@@ -153,35 +153,41 @@ export default function Home(): JSX.Element {
     <>
       <div className="min-h-screen flex flex-col items-center p-6 bg-transparent text-black dark:text-white">
         {/* Navigation Bar - Dropdown Menu */}
-        <nav className="w-full max-w-5xl flex justify-between items-center p-4 mb-6 fixed top-5 z-40 inset-x-5 mx-auto bg-white dark:bg-zinc-950 border border-white/20 dark:border-black/20 rounded-lg shadow-lg">
-          <div className="flex items-center gap-4">
-            <h1 className="text-md font-semibold shining-text">Starfield</h1>
-          </div>
-          <div className="hidden md:flex space-x-4">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.path}
-                className="hover:text-gray-600 dark:hover:text-gray-300 hover:underline transition-colors text-sm font-medium"
-              >
-                {item.name}
-              </Link>
-            ))}
-          </div>
-          <div className="flex items-center gap-2">
-            <ModeToggle />
-            <button id="menu-button" className="md:hidden" onClick={toggleMenu}>
-              <Menu className="h-6 w-6" />
-            </button>
-          </div>
-        </nav>
 
+        <div className="fixed top-5 left-0 right-0 flex justify-center z-40">
+          <div className="w-full max-w-4xl flex justify-between items-center p-4 mx-6 mb-6 bg-white dark:bg-zinc-950 border border-white/20 dark:border-black/20 rounded-lg shadow-lg">
+            <div className="flex items-center gap-4">
+              <h1 className="text-md font-semibold shining-text">Starfield</h1>
+            </div>
+            <div className="hidden md:flex space-x-4">
+              {navItems.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.path}
+                  className="hover:text-gray-600 dark:hover:text-gray-300 hover:underline transition-colors text-sm font-medium"
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+            <div className="flex items-center gap-2">
+              <ModeToggle />
+              <button
+                id="menu-button"
+                className="md:hidden"
+                onClick={toggleMenu}
+              >
+                <Menu className="h-6 w-6" />
+              </button>
+            </div>
+          </div>
+        </div>
         {/* Hero Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-4"
+          className="text-center mt-24 mb-4"
         >
           <p className="text-gray-600 dark:text-gray-400">Hey there, I'm</p>
           <div className="flex items-center justify-center">
