@@ -55,7 +55,10 @@ export default function Navbar() {
         }`}
         style={{ 
           top: isScrolled ? 0 : "1.25rem",
-          zIndex: 50 
+          zIndex: 50,
+          maxWidth: isScrolled ? "100%" : "calc(100% - 3rem)",
+    margin: isScrolled ? "0" : "0 auto",
+    borderRadius: isScrolled ? "0" : "12px"
         }}
       >
         <motion.div
