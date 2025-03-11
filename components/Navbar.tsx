@@ -33,10 +33,6 @@ export default function Navbar() {
     setIsOpen(!isOpen);
   };
 
-  const handleCloseMenu = () => {
-    setIsOpen(false);
-  };
-
   return (
     <motion.div
       initial={{ y: -30, opacity: 0 }}
@@ -49,7 +45,6 @@ export default function Navbar() {
       }`}
     >
       <div className="flex justify-between items-center w-full max-w-6xl mx-auto">
-        {/* Left side (Title) */}
         <motion.h1
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -59,7 +54,6 @@ export default function Navbar() {
           Starfield
         </motion.h1>
 
-        {/* Center (Nav Links - Desktop) */}
         <motion.div
           className="hidden md:flex space-x-6"
           initial={{ opacity: 0, y: -10 }}
@@ -77,7 +71,6 @@ export default function Navbar() {
           ))}
         </motion.div>
 
-        {/* Right side (ModeToggle & Menu Button) */}
         <motion.div
           className="flex items-center gap-4"
           initial={{ opacity: 0, x: 20 }}
@@ -95,27 +88,30 @@ export default function Navbar() {
         </motion.div>
       </div>
 
-      {/* Full-Screen Dynamic Island Dropdown */}
+      {/* Dynamic Island Expanding Dropdown */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{
-              borderRadius: "12px",
               height: "50px",
-              width: "180px",
+              width: "100%",
+              borderRadius: "12px",
             }}
             animate={{
-              borderRadius: "0px",
               height: "100vh",
               width: "100vw",
+              borderRadius: "0px",
             }}
             exit={{
-              borderRadius: "12px",
               height: "50px",
-              width: "180px",
+              width: "100%",
+              borderRadius: "12px",
             }}
-            transition={{ duration: 0.6, ease: "easeInOut" }}
-            className="fixed inset-0 bg-white dark:bg-[#0d0d0d] flex flex-col items-center justify-center z-50 shadow-2xl"
+            transition={{
+              duration: 0.6,
+              ease: [0.4, 0.0, 0.2, 1], // Smooth elastic effect
+            }}
+            className="absolute top-0 left-0 right-0 bg-white dark:bg-[#0d0d0d] flex flex-col items-center justify-center z-50 shadow-2xl"
             style={{
               transformOrigin: "top center",
               border: "2px solid rgba(255, 255, 255, 0.1)",
@@ -123,7 +119,7 @@ export default function Navbar() {
             }}
           >
             <button
-              onClick={handleCloseMenu}
+              onClick={() => setIsOpen(false)}
               className="absolute top-6 right-6 text-black dark:text-white"
             >
               <X className="h-6 w-6" />
@@ -132,7 +128,7 @@ export default function Navbar() {
               <Link
                 key={item.name}
                 href={item.path}
-                onClick={handleCloseMenu}
+                onClick={() => setIsOpen(false)}
                 className="text-lg font-medium text-black dark:text-white mb-6 hover:underline"
               >
                 {item.name}
