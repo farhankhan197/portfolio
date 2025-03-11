@@ -99,14 +99,27 @@ export default function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ scaleY: 0, scaleX: 0.4 }}
-            animate={{ scaleY: 1, scaleX: 1 }}
-            exit={{ scaleY: 0, scaleX: 0.4 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="fixed inset-0 bg-white dark:bg-[#0d0d0d] flex flex-col items-center justify-center z-50 border border-gray-300 dark:border-gray-700 shadow-2xl rounded-xl"
+            initial={{
+              borderRadius: "12px",
+              height: "50px",
+              width: "180px",
+            }}
+            animate={{
+              borderRadius: "0px",
+              height: "100vh",
+              width: "100vw",
+            }}
+            exit={{
+              borderRadius: "12px",
+              height: "50px",
+              width: "180px",
+            }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+            className="fixed inset-0 bg-white dark:bg-[#0d0d0d] flex flex-col items-center justify-center z-50 shadow-2xl"
             style={{
-              border: "2px solid rgba(255, 255, 255, 0.1)",
               transformOrigin: "top center",
+              border: "2px solid rgba(255, 255, 255, 0.1)",
+              overflow: "hidden",
             }}
           >
             <button
