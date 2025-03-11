@@ -40,14 +40,14 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeInOut" }}
         className={`fixed left-0 right-0 flex justify-center z-40 transition-all duration-500 ease-in-out transform ${
-  isScrolled
-    ? `top-0 scale-100 px-8 py-4 bg-white dark:bg-[#0d0d0d] ${
-        isOpen ? "shadow-none" : "shadow-md dark:shadow-[0_10px_30px_rgba(255,255,255,0.1)]"
-      } rounded-none`
-    : `top-5 scale-95 max-w-5xl px-6 py-4 mx-6 bg-white dark:bg-[#0d0d0d] ${
-        isOpen ? "shadow-none" : "shadow-lg dark:shadow-[0_20px_40px_rgba(255,255,255,0.1)]"
-      } rounded-lg`
-}`}
+          isScrolled
+            ? `top-0 scale-100 px-8 py-4 bg-white dark:bg-[#0d0d0d] ${
+                isOpen ? "shadow-none" : "shadow-md dark:shadow-[0_10px_30px_rgba(255,255,255,0.1)]"
+              } rounded-none`
+            : `top-5 scale-95 max-w-5xl px-6 py-4 mx-6 bg-white dark:bg-[#0d0d0d] ${
+                isOpen ? "shadow-none" : "shadow-lg dark:shadow-[0_20px_40px_rgba(255,255,255,0.1)]"
+              } rounded-lg`
+        }`}
       >
         <div className="flex justify-between items-center w-full max-w-6xl mx-auto">
           <motion.h1
@@ -102,24 +102,26 @@ export default function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
+            initial={{
+              scaleY: 0.9,
+              borderRadius: 12,
+              height: "0vh",
+            }}
             animate={{
-              opacity: 1,
-              height: "100vh",
-              width: "100vw",
+              scaleY: 1,
               borderRadius: 0,
+              height: "100vh",
             }}
             exit={{
-              opacity: 0,
-              height: 0,
-              borderRadius: "12px",
-              transition: { duration: 0.3 },
+              scaleY: 0.9,
+              borderRadius: 12,
+              height: "0vh",
             }}
             transition={{
               duration: 0.4,
               ease: [0.4, 0.0, 0.2, 1],
             }}
-            className="fixed top-0 left-0 flex flex-col items-center justify-center bg-white dark:bg-[#0d0d0d] z-30"
+            className="fixed top-0 left-0 flex flex-col items-center justify-center bg-white dark:bg-[#0d0d0d] z-30 origin-top w-full"
           >
             {navItems.map((item, i) => (
               <motion.div
