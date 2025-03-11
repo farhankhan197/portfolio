@@ -19,13 +19,13 @@ const StarfieldBackground = () => {
   let stars: Star[] = [];
   let bgColor = theme === "dark" ? "#111" : "#f0f0f0";
 
-  // Warp effect variables
   let warpFactor = 1;
   const maxWarpFactor = 8;
   const warpAcceleration = 0.2;
-  const slowdownDuration = 80; // Longer slowdown duration for a smooth effect
+  const slowdownDuration = 80;
   let slowdownProgress = 0;
   let isSlowingDown = false;
+  let isHolding = false;
 
   class Star {
     normalizedX: number;
@@ -110,7 +110,7 @@ const StarfieldBackground = () => {
 
   function setup() {
     if (stars.length === 0) {
-      stars = Array.from({ length: 20}, () => new Star());
+      stars = Array.from({ length: 20 }, () => new Star());
     } else {
       stars = stars.map((existingStar) => new Star(existingStar));
     }
@@ -151,24 +151,23 @@ const StarfieldBackground = () => {
   function startWarp() {
     setIsWarping(true);
     isSlowingDown = false;
+    isHolding = true;
   }
 
   function stopWarp() {
+    if (!isHolding) return;
     slowdownProgress = 0;
     isSlowingDown = true;
+    isHolding = false;
 
     const easeOutSlowdown = () => {
       slowdownProgress++;
-
       if (slowdownProgress <= slowdownDuration) {
         const progress = slowdownProgress / slowdownDuration;
-        warpFactor = 1 + (maxWarpFactor - 1) * Math.pow(1 - progress, 3); // Smooth cubic ease-out
-
+        warpFactor = 1 + (maxWarpFactor - 1) * Math.pow(1 - progress, 3);
         if (slowdownProgress > slowdownDuration * 0.8) {
-          // Overshoot effect: slow down slightly below 1 before settling
           warpFactor = 1 + (warpFactor - 1) * 0.9;
         }
-
         requestAnimationFrame(easeOutSlowdown);
       } else {
         warpFactor = 1;
@@ -176,7 +175,6 @@ const StarfieldBackground = () => {
         setIsWarping(false);
       }
     };
-
     easeOutSlowdown();
   }
 
@@ -193,25 +191,35 @@ const StarfieldBackground = () => {
   }, [theme]);
 
   useEffect(() => {
-    const handleClick = (e: MouseEvent) => {
+    const handleInteractionStart = (e: MouseEvent | TouchEvent) => {
       const target = e.target as HTMLElement;
-      const closestAnchor = target.closest("a");
 
+      // Prevent warp when clicking content elements
       if (
-        closestAnchor &&
-        closestAnchor.href.startsWith(window.location.origin) &&
-        !closestAnchor.target &&
-        !closestAnchor.hasAttribute("download") &&
-        !(e.ctrlKey || e.metaKey || e.shiftKey)
+        target.closest(
+          "a, button, input, textarea, select, [role='button'], [data-no-warp]"
+        )
       ) {
-        startWarp();
-        setTimeout(stopWarp, 600);
+        return;
       }
+
+      startWarp();
     };
 
-    document.addEventListener("click", handleClick);
+    const handleInteractionEnd = () => {
+      stopWarp();
+    };
+
+    document.addEventListener("mousedown", handleInteractionStart);
+    document.addEventListener("mouseup", handleInteractionEnd);
+    document.addEventListener("touchstart", handleInteractionStart);
+    document.addEventListener("touchend", handleInteractionEnd);
+
     return () => {
-      document.removeEventListener("click", handleClick);
+      document.removeEventListener("mousedown", handleInteractionStart);
+      document.removeEventListener("mouseup", handleInteractionEnd);
+      document.removeEventListener("touchstart", handleInteractionStart);
+      document.removeEventListener("touchend", handleInteractionEnd);
     };
   }, []);
 
@@ -224,13 +232,7 @@ const StarfieldBackground = () => {
   );
 };
 
-function remap(
-  value: number,
-  from1: number,
-  to1: number,
-  from2: number,
-  to2: number
-) {
+function remap(value, from1, to1, from2, to2) {
   return from2 + ((value - from1) * (to2 - from2)) / (to1 - from1);
 }
 
