@@ -2,13 +2,11 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useTheme } from "next-themes";
-import { useRouter } from "next/navigation";
 
 const StarfieldBackground = () => {
   if (typeof window === "undefined") return null;
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { theme } = useTheme();
-  const router = useRouter();
   const [isWarping, setIsWarping] = useState(false);
   const animationFrameId = useRef<number | null>(null);
 
@@ -26,7 +24,6 @@ const StarfieldBackground = () => {
   const slowdownDuration = 80;
   let slowdownProgress = 0;
   let isSlowingDown = false;
-  let isMouseHeld = false;
 
   class Star {
     normalizedX: number;
@@ -111,7 +108,7 @@ const StarfieldBackground = () => {
 
   function setup() {
     if (stars.length === 0) {
-      stars = Array.from({ length: 200 }, () => new Star());
+      stars = Array.from({ length: 100 }, () => new Star());
     } else {
       stars = stars.map((existingStar) => new Star(existingStar));
     }
@@ -152,21 +149,9 @@ const StarfieldBackground = () => {
   function startWarp() {
     setIsWarping(true);
     isSlowingDown = false;
-    isMouseHeld = true;
-
-    const increaseWarp = () => {
-      if (!isMouseHeld) return;
-      if (warpFactor < maxWarpFactor) {
-        warpFactor += warpAcceleration;
-      }
-      requestAnimationFrame(increaseWarp);
-    };
-
-    increaseWarp();
   }
 
   function stopWarp() {
-    isMouseHeld = false;
     slowdownProgress = 0;
     isSlowingDown = true;
 
@@ -176,7 +161,6 @@ const StarfieldBackground = () => {
       if (slowdownProgress <= slowdownDuration) {
         const progress = slowdownProgress / slowdownDuration;
         warpFactor = 1 + (maxWarpFactor - 1) * Math.pow(1 - progress, 3);
-
         requestAnimationFrame(easeOutSlowdown);
       } else {
         warpFactor = 1;
@@ -187,6 +171,32 @@ const StarfieldBackground = () => {
 
     easeOutSlowdown();
   }
+
+  // ✅ Listen for click and hold events
+  useEffect(() => {
+    const handleMouseDown = (e: MouseEvent) => {
+      if (e.target instanceof HTMLElement && e.target.closest("[data-content]")) {
+        return;
+      }
+      startWarp();
+    };
+
+    const handleMouseUp = () => {
+      stopWarp();
+    };
+
+    document.addEventListener("mousedown", handleMouseDown);
+    document.addEventListener("mouseup", handleMouseUp);
+    document.addEventListener("touchstart", handleMouseDown);
+    document.addEventListener("touchend", handleMouseUp);
+
+    return () => {
+      document.removeEventListener("mousedown", handleMouseDown);
+      document.removeEventListener("mouseup", handleMouseUp);
+      document.removeEventListener("touchstart", handleMouseDown);
+      document.removeEventListener("touchend", handleMouseUp);
+    };
+  }, []);
 
   useEffect(() => {
     resizeCanvas();
@@ -199,24 +209,6 @@ const StarfieldBackground = () => {
         cancelAnimationFrame(animationFrameId.current);
     };
   }, [theme]);
-
-  useEffect(() => {
-    const handleMouseDown = (e: MouseEvent) => {
-      if ((e.target as HTMLElement).closest("[data-main-content]")) return;
-      startWarp();
-    };
-
-    const handleMouseUp = () => {
-      stopWarp();
-    };
-
-    document.addEventListener("mousedown", handleMouseDown);
-    document.addEventListener("mouseup", handleMouseUp);
-    return () => {
-      document.removeEventListener("mousedown", handleMouseDown);
-      document.removeEventListener("mouseup", handleMouseUp);
-    };
-  }, []);
 
   return (
     <canvas
@@ -233,7 +225,7 @@ function remap(
   to1: number,
   from2: number,
   to2: number
-): number {
+) {
   return from2 + ((value - from1) * (to2 - from2)) / (to1 - from1);
 }
 
