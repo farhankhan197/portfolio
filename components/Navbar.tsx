@@ -41,7 +41,7 @@ export default function Navbar() {
         transition={{ duration: 0.6, ease: "easeInOut" }}
         className={`fixed left-0 right-0 flex justify-center z-40 transition-all duration-500 ease-in-out transform ${
           isScrolled
-            ? `top-0 shadow-sm scale-100 px-8 py-4 bg-white dark:bg-[#0d0d0d] ${
+            ? `top-0 shadow-none scale-100 px-8 py-4 bg-white dark:bg-[#0d0d0d] ${
                 isOpen ? "shadow-none" : "shadow-md dark:shadow-[0_10px_30px_rgba(255,255,255,0.1)]"
               } rounded-none`
             : `top-0 scale-95 max-w-5xl px-6 py-4 mx-6 bg-white dark:bg-[#0d0d0d] ${
