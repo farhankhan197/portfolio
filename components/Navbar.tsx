@@ -22,7 +22,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 5000000);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -36,7 +36,7 @@ export default function Navbar() {
   return (
     <>
       <motion.div
-        initial={{ y: -30, opacity: 0 }}
+        initial={{ y: 0, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeInOut" }}
         className={`fixed left-0 right-0 flex justify-center z-40 transition-all duration-500 ease-in-out shadow-none transform ${
