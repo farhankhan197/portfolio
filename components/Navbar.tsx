@@ -45,7 +45,7 @@ export default function Navbar() {
             ? "top-0 w-full px-8 py-4 bg-white dark:bg-[#0d0d0d] shadow-md"
             : "top-5 max-w-5xl px-6 py-4 mx-6 bg-white dark:bg-[#0d0d0d] rounded-lg shadow-lg"
         }`}
-        style={{ zIndex: 50 }} // Keep navbar untouched
+        style={{ zIndex: 50 }}
       >
         <div className="flex justify-between items-center w-full max-w-6xl mx-auto">
           <motion.h1
@@ -92,13 +92,14 @@ export default function Navbar() {
         </div>
       </motion.div>
 
-      {/* Dynamic Island Dropdown Expanding from Navbar */}
+      {/* Dynamic Island Dropdown */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{
               height: "0px",
-              width: "calc(100% - 3rem)", // Perfectly aligns to `mx-6`
+              width: "calc(100% - 3rem)",
+              maxWidth: "calc(100% - 3rem)", // Prevents space on the right
               top: "50px",
               left: "50%",
               translateX: "-50%",
@@ -107,6 +108,7 @@ export default function Navbar() {
             animate={{
               height: "100vh",
               width: "100vw",
+              maxWidth: "100vw", // Smooth transition into fullscreen
               borderRadius: "0px",
               top: "0px",
               left: "0px",
@@ -115,6 +117,7 @@ export default function Navbar() {
             exit={{
               height: "0px",
               width: "calc(100% - 3rem)",
+              maxWidth: "calc(100% - 3rem)",
               borderRadius: "12px",
               top: "50px",
               left: "50%",
@@ -129,8 +132,8 @@ export default function Navbar() {
               transformOrigin: "top center",
               border: "2px solid rgba(255, 255, 255, 0.1)",
               overflow: "hidden",
+              left: "1.5rem", // Prevents space to the right
               maxWidth: "calc(100% - 3rem)",
-              left: "1.5rem", // Align with `mx-6`
             }}
           >
             {navItems.map((item) => (
