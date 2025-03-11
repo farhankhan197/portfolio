@@ -10,6 +10,7 @@ import LinkedinIcon from "@/components/LinkedinIcon";
 import GithubIcon from "@/components/GithubIcon";
 import TwitterIcon from "@/components/TwitterIcon";
 import DiscordIcon from "@/components/DiscordIcon";
+import NavBar from "@/components/Navbar";
 
 const LeetCodeIcon = dynamic(() => import("@/components/LeetcodeIcon"), {
   ssr: false,
@@ -154,8 +155,8 @@ export default function Home(): JSX.Element {
       <div className="min-h-screen flex flex-col items-center p-6 bg-transparent text-black dark:text-white">
         {/* Navigation Bar - Dropdown Menu */}
 
-        <div className="fixed top-5 left-0 right-0 flex justify-center z-40">
-          <div className="w-full max-w-4xl flex justify-between items-center p-4 mx-6 mb-6 bg-white dark:bg-zinc-950 border border-white/20 dark:border-black/20 rounded-lg shadow-lg">
+        {/* <div className="fixed top-5 left-0 right-0 flex justify-center z-40 transition-all duration-300 ease-in-out transform">
+          <div className="w-full max-w-4xl flex justify-between items-center p-4 mx-6 mb-6 bg-white dark:bg-zinc-950 border border-white/20 dark:border-black/20 rounded-lg shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-300">
             <div className="flex items-center gap-4">
               <h1 className="text-md font-semibold shining-text">Starfield</h1>
             </div>
@@ -181,7 +182,10 @@ export default function Home(): JSX.Element {
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
+        <NavBar />
+
+        {/* Mobile Navigation Menu */}
         {/* Hero Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
