@@ -33,46 +33,74 @@ export default function Navbar() {
     setIsOpen(!isOpen);
   };
 
+  // Animation variants
+  const navbarVariants = {
+    initial: { y: -30, opacity: 0 },
+    animate: { 
+      y: 0, 
+      opacity: 1,
+      transition: { 
+        duration: 0.4, 
+        ease: [0.25, 0.1, 0.25, 1] 
+      }
+    }
+  };
+
   return (
     <>
-      {/* Floating Navbar */}
+      {/* Fixed Navbar with Fixed Width Container */}
       <div 
-        className={`fixed flex justify-center z-40 transition-all duration-300 ${
-          isScrolled ? "w-full px-8" : "max-w-5xl mx-6 rounded-lg"
+        className={`fixed left-0 right-0 flex justify-center z-40 transition-all duration-300 ${
+          isOpen ? "" : isScrolled ? "shadow-md" : "shadow-lg"
         }`}
         style={{ 
           top: isScrolled ? 0 : "1.25rem",
-          left: isScrolled ? 0 : "auto",
-          right: isScrolled ? 0 : "auto",
           zIndex: 50 
         }}
       >
         <motion.div
           initial={{ y: -30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.4 }}
-          className={`w-full flex justify-center ${
+          animate={{ 
+            y: 0, 
+            opacity: 1,
+          }}
+          transition={{ 
+            duration: 0.4, 
+            ease: [0.25, 0.1, 0.25, 1] 
+          }}
+          className={`w-full transition-all duration-300 flex justify-center ${
             isScrolled 
               ? "bg-white/95 dark:bg-[#0d0d0d]/95 backdrop-blur-sm px-8 py-4" 
-              : "bg-white dark:bg-[#0d0d0d] rounded-lg px-6 py-4 shadow-lg"
+              : "max-w-5xl mx-auto bg-white dark:bg-[#0d0d0d] rounded-lg px-6 py-4"
           }`}
         >
           <div className="flex justify-between items-center w-full max-w-6xl">
-            {/* Left Side (Title) */}
             <motion.h1
               initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3 }}
+              animate={{ 
+                opacity: 1, 
+                x: 0,
+                transition: { 
+                  duration: 0.3, 
+                  ease: [0.25, 0.1, 0.25, 1] 
+                }
+              }}
               className="text-md font-semibold text-black dark:text-white shining-text"
             >
               Starfield
             </motion.h1>
 
-            {/* Center (Nav Links for Desktop) */}
             <motion.div
               initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.1 }}
+              animate={{ 
+                opacity: 1, 
+                y: 0,
+                transition: { 
+                  duration: 0.3, 
+                  delay: 0.1,
+                  ease: [0.25, 0.1, 0.25, 1] 
+                }
+              }}
               className="hidden md:flex space-x-6"
             >
               {navItems.map((item) => (
@@ -86,11 +114,17 @@ export default function Navbar() {
               ))}
             </motion.div>
 
-            {/* Right Side (ModeToggle & Menu Button) */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3, delay: 0.2 }}
+              animate={{ 
+                opacity: 1, 
+                x: 0,
+                transition: { 
+                  duration: 0.3, 
+                  delay: 0.2,
+                  ease: [0.25, 0.1, 0.25, 1] 
+                }
+              }}
               className="flex items-center gap-4"
             >
               <ModeToggle />
@@ -128,7 +162,7 @@ export default function Navbar() {
         </motion.div>
       </div>
 
-      {/* Mobile Menu Expansion */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -150,8 +184,11 @@ export default function Navbar() {
               x: 0,
               borderRadius: 0,
               transition: {
-                duration: 0.5,
+                duration: 0.4,
                 ease: [0.4, 0.0, 0.2, 1],
+                when: "beforeChildren",
+                staggerChildren: 0.1,
+                delayChildren: 0.2
               }
             }}
             exit={{ 
@@ -164,6 +201,10 @@ export default function Navbar() {
               borderRadius: "12px",
               transition: {
                 duration: 0.3,
+                ease: [0.4, 0.0, 0.2, 1],
+                when: "afterChildren",
+                staggerChildren: 0.05,
+                staggerDirection: -1
               }
             }}
             className="fixed bg-white dark:bg-[#0d0d0d] flex flex-col items-center justify-center z-30 overflow-hidden"
@@ -178,21 +219,52 @@ export default function Navbar() {
                 <motion.div
                   key={item.name}
                   initial={{ opacity: 0, y: -20, scale: 0.95 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: -20, scale: 0.95 }}
-                  transition={{ duration: 0.3, delay: i * 0.1 }}
-                  className="w-full text-center"
+                  animate={{ 
+                    opacity: 1, 
+                    y: 0, 
+                    scale: 1,
+                    transition: { 
+                      duration: 0.3, 
+                      delay: 0.2 + (i * 0.1),
+                      ease: "easeOut" 
+                    }
+                  }}
+                  exit={{ 
+                    opacity: 0, 
+                    y: -20, 
+                    scale: 0.95,
+                    transition: { 
+                      duration: 0.2, 
+                      delay: (navItems.length - 1 - i) * 0.05,
+                      ease: "easeInOut" 
+                    }
+                  }}
+                  className="w-full px-6 py-3"
                 >
                   <Link
                     href={item.path}
                     onClick={() => setIsOpen(false)}
-                    className="text-lg font-medium text-black dark:text-white hover:underline"
+                    className="text-lg font-medium text-black dark:text-white hover:underline block py-3 px-6 w-full text-center"
                   >
                     {item.name}
                   </Link>
+                  {i < navItems.length - 1 && (
+                    <div className="h-px w-3/4 bg-gray-200 dark:bg-gray-800 mx-auto mt-3"></div>
+                  )}
                 </motion.div>
               ))}
             </div>
+
+            <motion.button
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1, transition: { delay: 0.5, duration: 0.3 } }}
+              exit={{ opacity: 0, transition: { duration: 0.2 } }}
+              onClick={() => setIsOpen(false)}
+              className="absolute top-6 right-6 text-black dark:text-white focus:outline-none"
+              aria-label="Close menu"
+            >
+              <X className="h-6 w-6" />
+            </motion.button>
           </motion.div>
         )}
       </AnimatePresence>
