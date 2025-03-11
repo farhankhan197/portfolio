@@ -143,9 +143,9 @@ export default function Navbar() {
         animate="visible"
         className={`fixed left-0 right-0 flex justify-center z-40 transition-all duration-300 ${
           isScrolled
-            ? "top-0 w-full px-8 py-4 bg-white/95 dark:bg-[#0d0d0d]/95 backdrop-blur-sm shadow-md"
-            : "top-5 max-w-5xl px-6 py-4 mx-6 bg-white dark:bg-[#0d0d0d] rounded-lg shadow-lg"
-        }`}
+            ? "top-0 w-full px-8 py-4 bg-white/95 dark:bg-[#0d0d0d]/95 backdrop-blur-sm"
+            : "top-5 max-w-5xl px-6 py-4 mx-6 bg-white dark:bg-[#0d0d0d] rounded-lg"
+        } ${isOpen ? "" : isScrolled ? "shadow-md" : "shadow-lg"}`}
         style={{ zIndex: 50 }}
       >
         <div className="flex justify-between items-center w-full max-w-6xl mx-auto">
