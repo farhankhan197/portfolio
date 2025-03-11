@@ -294,7 +294,7 @@ export default function Home(): JSX.Element {
           {/* Project Details */}
           <div className="mt-4">
             <Link href={project.url} className="">
-              <p className="dark:text-white text-lg hover:underline font-medium">
+              <p className="dark:text-white text-lg hover:underline mb-2 font-medium">
                 {project.title}
               </p>
               {project.techStack && (
@@ -307,7 +307,7 @@ export default function Home(): JSX.Element {
                 </div>
               )}
             </Link>
-            <p className="text-sm font-semibold text-gray-300">
+            <p className="text-sm mt-2 font-semibold text-gray-300">
               {project.description}
             </p>
             <div className="flex gap-4 mt-4">
