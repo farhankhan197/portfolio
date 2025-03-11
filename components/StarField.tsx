@@ -25,7 +25,6 @@ const StarfieldBackground = () => {
   const slowdownDuration = 80;
   let slowdownProgress = 0;
   let isSlowingDown = false;
-  let isHolding = false;
 
   class Star {
     normalizedX: number;
@@ -151,23 +150,23 @@ const StarfieldBackground = () => {
   function startWarp() {
     setIsWarping(true);
     isSlowingDown = false;
-    isHolding = true;
   }
 
   function stopWarp() {
-    if (!isHolding) return;
     slowdownProgress = 0;
     isSlowingDown = true;
-    isHolding = false;
 
     const easeOutSlowdown = () => {
       slowdownProgress++;
+
       if (slowdownProgress <= slowdownDuration) {
         const progress = slowdownProgress / slowdownDuration;
         warpFactor = 1 + (maxWarpFactor - 1) * Math.pow(1 - progress, 3);
+
         if (slowdownProgress > slowdownDuration * 0.8) {
           warpFactor = 1 + (warpFactor - 1) * 0.9;
         }
+
         requestAnimationFrame(easeOutSlowdown);
       } else {
         warpFactor = 1;
@@ -175,6 +174,7 @@ const StarfieldBackground = () => {
         setIsWarping(false);
       }
     };
+
     easeOutSlowdown();
   }
 
@@ -191,35 +191,23 @@ const StarfieldBackground = () => {
   }, [theme]);
 
   useEffect(() => {
-    const handleInteractionStart = (e: MouseEvent | TouchEvent) => {
+    const handleClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
+      const isInteractive =
+        target.closest("a, button, input, textarea, select, [role='button'], [data-no-warp]");
 
-      // Prevent warp when clicking content elements
-      if (
-        target.closest(
-          "a, button, input, textarea, select, [role='button'], [data-no-warp]"
-        )
-      ) {
-        return;
+      if (!isInteractive) {
+        startWarp();
+        setTimeout(stopWarp, 600);
       }
-
-      startWarp();
     };
 
-    const handleInteractionEnd = () => {
-      stopWarp();
-    };
-
-    document.addEventListener("mousedown", handleInteractionStart);
-    document.addEventListener("mouseup", handleInteractionEnd);
-    document.addEventListener("touchstart", handleInteractionStart);
-    document.addEventListener("touchend", handleInteractionEnd);
+    document.addEventListener("mousedown", handleClick);
+    document.addEventListener("mouseup", stopWarp);
 
     return () => {
-      document.removeEventListener("mousedown", handleInteractionStart);
-      document.removeEventListener("mouseup", handleInteractionEnd);
-      document.removeEventListener("touchstart", handleInteractionStart);
-      document.removeEventListener("touchend", handleInteractionEnd);
+      document.removeEventListener("mousedown", handleClick);
+      document.removeEventListener("mouseup", stopWarp);
     };
   }, []);
 
@@ -232,7 +220,13 @@ const StarfieldBackground = () => {
   );
 };
 
-function remap(value, from1, to1, from2, to2) {
+function remap(
+  value: number,
+  from1: number,
+  to1: number,
+  from2: number,
+  to2: number
+): number {
   return from2 + ((value - from1) * (to2 - from2)) / (to1 - from1);
 }
 
