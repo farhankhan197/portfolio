@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Menu } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { ModeToggle } from "@/components/ModeToggle";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface NavItem {
   name: string;
@@ -18,6 +18,7 @@ const navItems: NavItem[] = [
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,6 +29,14 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleToggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleCloseMenu = () => {
+    setIsOpen(false);
+  };
+
   return (
     <motion.div
       initial={{ y: -30, opacity: 0 }}
@@ -35,8 +44,8 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: "easeInOut" }}
       className={`fixed left-0 right-0 flex justify-center z-40 transition-all duration-500 ease-in-out transform ${
         isScrolled
-          ? "top-0 scale-100 px-8 py-4 bg-white dark:bg-[#0d0d0d] shadow-md dark:shadow-[0_10px_30px_rgba(255,255,255,0.1)] rounded-none"
-          : "top-5 scale-95 max-w-5xl px-6 py-4 mx-6 bg-white dark:bg-[#0d0d0d] rounded-lg shadow-lg dark:shadow-[0_20px_40px_rgba(255,255,255,0.1)]"
+          ? "top-0 scale-100 px-8 py-4 bg-white dark:bg-[#0d0d0d] shadow-md"
+          : "top-5 scale-95 max-w-5xl px-6 py-4 mx-6 bg-white dark:bg-[#0d0d0d] rounded-lg"
       }`}
     >
       <div className="flex justify-between items-center w-full max-w-6xl mx-auto">
@@ -50,7 +59,7 @@ export default function Navbar() {
           Starfield
         </motion.h1>
 
-        {/* Center (Nav Links) */}
+        {/* Center (Nav Links - Desktop) */}
         <motion.div
           className="hidden md:flex space-x-6"
           initial={{ opacity: 0, y: -10 }}
@@ -68,7 +77,7 @@ export default function Navbar() {
           ))}
         </motion.div>
 
-        {/* Right side (ModeToggle & Menu) */}
+        {/* Right side (ModeToggle & Menu Button) */}
         <motion.div
           className="flex items-center gap-4"
           initial={{ opacity: 0, x: 20 }}
@@ -76,11 +85,39 @@ export default function Navbar() {
           transition={{ duration: 0.5, delay: 0.3 }}
         >
           <ModeToggle />
-          <button id="menu-button" className="md:hidden">
-            <Menu className="h-6 w-6 text-black dark:text-white" />
+          <button onClick={handleToggleMenu} className="md:hidden">
+            {isOpen ? (
+              <X className="h-6 w-6 text-black dark:text-white" />
+            ) : (
+              <Menu className="h-6 w-6 text-black dark:text-white" />
+            )}
           </button>
         </motion.div>
       </div>
+
+      {/* Full-Screen Dropdown Menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="fixed inset-0 bg-white dark:bg-[#0d0d0d] flex flex-col items-center justify-center z-50 border border-gray-300 dark:border-gray-700 rounded-lg shadow-lg"
+          >
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                href={item.path}
+                onClick={handleCloseMenu}
+                className="text-lg font-medium text-black dark:text-white mb-4 hover:underline"
+              >
+                {item.name}
+              </Link>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 }
