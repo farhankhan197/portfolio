@@ -98,8 +98,10 @@ export default function Navbar() {
           <motion.div
             initial={{
               height: "0px",
-              width: "100%",
+              width: "calc(100% - 3rem)", // Perfectly aligns to `mx-6`
               top: "50px",
+              left: "50%",
+              translateX: "-50%",
               borderRadius: "12px",
             }}
             animate={{
@@ -107,22 +109,28 @@ export default function Navbar() {
               width: "100vw",
               borderRadius: "0px",
               top: "0px",
+              left: "0px",
+              translateX: "0%",
             }}
             exit={{
               height: "0px",
-              width: "100%",
+              width: "calc(100% - 3rem)",
               borderRadius: "12px",
               top: "50px",
+              left: "50%",
+              translateX: "-50%",
             }}
             transition={{
               duration: 0.6,
-              ease: [0.4, 0.0, 0.2, 1], // Smooth elastic effect
+              ease: [0.4, 0.0, 0.2, 1],
             }}
-            className="fixed left-0 right-0 bg-white dark:bg-[#0d0d0d] flex flex-col items-center justify-center z-30 shadow-2xl"
+            className="fixed bg-white dark:bg-[#0d0d0d] flex flex-col items-center justify-center z-30 shadow-2xl"
             style={{
               transformOrigin: "top center",
               border: "2px solid rgba(255, 255, 255, 0.1)",
               overflow: "hidden",
+              maxWidth: "calc(100% - 3rem)",
+              left: "1.5rem", // Align with `mx-6`
             }}
           >
             {navItems.map((item) => (
