@@ -40,10 +40,14 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeInOut" }}
         className={`fixed left-0 right-0 flex justify-center z-40 transition-all duration-500 ease-in-out transform ${
-          isScrolled
-            ? "top-0 scale-100 px-8 py-4 bg-white dark:bg-[#0d0d0d] shadow-md dark:shadow-[0_10px_30px_rgba(255,255,255,0.1)] rounded-none"
-            : "top-5 scale-95 max-w-5xl px-6 py-4 mx-6 bg-white dark:bg-[#0d0d0d] rounded-lg shadow-lg dark:shadow-[0_20px_40px_rgba(255,255,255,0.1)]"
-        }`}
+  isScrolled
+    ? `top-0 scale-100 px-8 py-4 bg-white dark:bg-[#0d0d0d] ${
+        isOpen ? "shadow-none" : "shadow-md dark:shadow-[0_10px_30px_rgba(255,255,255,0.1)]"
+      } rounded-none`
+    : `top-5 scale-95 max-w-5xl px-6 py-4 mx-6 bg-white dark:bg-[#0d0d0d] ${
+        isOpen ? "shadow-none" : "shadow-lg dark:shadow-[0_20px_40px_rgba(255,255,255,0.1)]"
+      } rounded-lg`
+}`}
       >
         <div className="flex justify-between items-center w-full max-w-6xl mx-auto">
           <motion.h1
