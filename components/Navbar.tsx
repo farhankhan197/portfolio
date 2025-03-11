@@ -54,7 +54,7 @@ export default function Navbar() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-md font-semibold text-black dark:text-white shining-text"
+            className="text-md font-semibold text-black dark:text-white"
           >
             Starfield
           </motion.h1>
