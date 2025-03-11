@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Menu } from "lucide-react";
 import { ModeToggle } from "@/components/ModeToggle";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface NavItem {
   name: string;
@@ -18,6 +18,7 @@ const navItems: NavItem[] = [
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -79,11 +80,39 @@ export default function Navbar() {
           transition={{ duration: 0.5, delay: 0.3 }}
         >
           <ModeToggle />
-          <button id="menu-button" className="md:hidden">
+          <button
+            id="menu-button"
+            className="md:hidden"
+            onClick={() => setIsOpen(!isOpen)}
+          >
             <Menu className="h-6 w-6 text-black dark:text-white" />
           </button>
         </motion.div>
       </div>
+
+      {/* ✅ Dropdown Menu (Dynamic Island-style expansion) */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+            className="absolute top-full left-0 w-full bg-white dark:bg-[#0d0d0d] shadow-md dark:shadow-[0_10px_30px_rgba(255,255,255,0.1)] rounded-b-lg overflow-hidden"
+          >
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                href={item.path}
+                onClick={() => setIsOpen(false)}
+                className="block px-6 py-3 text-sm font-medium text-black dark:text-white hover:bg-gray-100 dark:hover:bg-[#1a1a1a] transition-all"
+              >
+                {item.name}
+              </Link>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 }
