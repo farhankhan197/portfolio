@@ -10,10 +10,10 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { name: "About", path: "#about" },
-  { name: "Projects", path: "#projects" },
-  { name: "Skills", path: "#skills" },
-  { name: "Contact", path: "#contact" },
+  { name: "About", path: "/about" },
+  { name: "Projects", path: "/projects" },
+  { name: "Skills", path: "/skills" },
+  { name: "Contact", path: "/contact" },
 ];
 
 export default function Navbar() {
