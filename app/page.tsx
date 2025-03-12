@@ -90,7 +90,7 @@ export default function Home(): JSX.Element {
       logo: "/images/thecatchypixel_logo.jpg",
       jobTitle: "Co-Founder",
       duration: "Mar 2025 - Present",
-      url: "https://thecatchypixel.com",
+      url: "https://x.com/thecatchypixel",
     },
     {
       company: "Edslash",
