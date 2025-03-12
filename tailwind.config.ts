@@ -14,11 +14,11 @@ export default {
         // 'typing': 'typing 3.5s steps(30, end), blink-caret 0.75s step-end infinite',
         'gradient': 'gradient 8s ease infinite',
         'width': 'width 1s ease-out forwards',
-        'ping': 'ping 5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'ping': 'ping 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'float': 'float 6s ease-in-out infinite',
         'typing': 'typing 3.5s steps(30, end)',
         'fade-in-up': 'fade-in-up 0.6s ease-out forwards',
-        'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'pulse': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
      
       backgroundSize: {
