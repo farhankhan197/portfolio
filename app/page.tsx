@@ -293,6 +293,10 @@ export default function Home(): JSX.Element {
               <p className="text-sm mt-2 font-semibold text-gray-300">
                 {project.description}
               </p>
+             <div className="mt-4 gap-4">
+              <Link href = ""> <GithubIcon/> </Link> 
+             <Link href = "" className="rotate-0 hover:rotate-45 transition-all ease-in-out transform"><LinkIcon/></Link>
+             </div>
             </div>
           </motion.section>
         ))}
