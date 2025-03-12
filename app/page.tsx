@@ -156,7 +156,7 @@ export default function Home(): JSX.Element {
         {/* Navigation Bar - Dropdown Menu */}
 
         {/* <div className="fixed top-5 left-0 right-0 flex justify-center z-40 transition-all duration-300 ease-in-out transform">
-          <div className="w-full max-w-4xl flex justify-between items-center p-4 mx-6 mb-6 bg-white dark:bg-zinc-950 border border-white/20 dark:border-black/20 rounded-lg shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-300">
+          <div className="w-full max-w-3xl flex justify-between items-center p-4 mx-6 mb-6 bg-white dark:bg-zinc-950 border border-white/20 dark:border-black/20 rounded-lg shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-300">
             <div className="flex items-center gap-4">
               <h1 className="text-md font-semibold shining-text">Starfield</h1>
             </div>
@@ -204,7 +204,7 @@ export default function Home(): JSX.Element {
             />
           </div>
           <h1 className="text-3xl font-extrabold">Farhan Khan</h1>
-          <p className="text-left w-full max-w-3xl p-6 bg-transparent backdrop-blur-lg rounded-xl shadow-md">
+          <p className="text-left w-full max-w-lg p-6 bg-transparent backdrop-blur-lg rounded-xl shadow-md">
             I am a third-year CS student, passionate Full-Stack Developer, and
             Machine Learning Engineer with expertise in building
             high-performance web applications and AI-driven solutions.
