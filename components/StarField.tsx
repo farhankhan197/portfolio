@@ -9,6 +9,7 @@ const StarfieldBackground = () => {
   const { theme } = useTheme();
   const [isWarping, setIsWarping] = useState(false);
   const animationFrameId = useRef<number | null>(null);
+  const starIncreaseInterval = useRef<number | null>(null);
 
   let canvasWidth = window.innerWidth;
   let canvasHeight = window.innerHeight;
@@ -23,6 +24,9 @@ const StarfieldBackground = () => {
   const slowdownDuration = 80;
   let slowdownProgress = 0;
   let isSlowingDown = false;
+  const maxStars = 500; // Adjust for performance
+  let baseStarCount = 100;
+  let currentStarCount = baseStarCount;
 
   class Star {
     normalizedX: number;
@@ -106,11 +110,7 @@ const StarfieldBackground = () => {
   }
 
   function setup() {
-    if (stars.length === 0) {
-      stars = Array.from({ length: 4}, () => new Star());
-    } else {
-      stars = stars.map((existingStar) => new Star(existingStar));
-    }
+    stars = Array.from({ length: currentStarCount }, () => new Star());
   }
 
   function draw() {
@@ -149,11 +149,25 @@ const StarfieldBackground = () => {
     setIsWarping(true);
     isSlowingDown = false;
     warpFactor = maxWarpFactor;
+
+    // Gradually increase stars while holding warp
+    if (starIncreaseInterval.current) clearInterval(starIncreaseInterval.current);
+
+    starIncreaseInterval.current = window.setInterval(() => {
+      if (currentStarCount < maxStars) {
+        currentStarCount += 10; // Increase gradually
+        setup();
+      }
+    }, 50);
   }
 
   function stopWarp() {
     isSlowingDown = true;
     slowdownProgress = 0;
+    if (starIncreaseInterval.current) {
+      clearInterval(starIncreaseInterval.current);
+      starIncreaseInterval.current = null;
+    }
 
     const easeOutSlowdown = () => {
       slowdownProgress++;
@@ -165,6 +179,16 @@ const StarfieldBackground = () => {
       } else {
         warpFactor = 1;
         setIsWarping(false);
+
+        // Gradually remove excess stars after slowdown
+        const removeStarsInterval = setInterval(() => {
+          if (currentStarCount > baseStarCount) {
+            currentStarCount -= 10;
+            setup();
+          } else {
+            clearInterval(removeStarsInterval);
+          }
+        }, 50);
       }
     };
 
@@ -202,22 +226,10 @@ const StarfieldBackground = () => {
     };
   }, [theme]);
 
-  return (
-    <canvas
-      ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full pointer-events-none"
-      style={{ zIndex: -1 }}
-    />
-  );
+  return <canvas ref={canvasRef} className="fixed top-0 left-0 w-full h-full pointer-events-none" style={{ zIndex: -1 }} />;
 };
 
-function remap(
-  value: number,
-  from1: number,
-  to1: number,
-  from2: number,
-  to2: number
-) {
+function remap(value: number, from1: number, to1: number, from2: number, to2: number) {
   return from2 + ((value - from1) * (to2 - from2)) / (to1 - from1);
 }
 
