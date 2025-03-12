@@ -145,7 +145,7 @@
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shine 15s linear infinite;
+  animation: shine 5s linear infinite;
 }
 
 /* Dark Mode: White Shine Effect */
@@ -159,7 +159,7 @@
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shine 15s linear infinite;
+  animation: shine 5s linear infinite;
 }
 
 
