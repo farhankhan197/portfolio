@@ -196,7 +196,7 @@ export default function Home(): JSX.Element {
           <p className="text-gray-600 dark:text-gray-400">Hey there, I'm</p>
           <div className="flex items-center justify-center">
             <Image
-              src="/images/photo.jpg"
+              src="/images/iyel4h.jpg"
               alt="Profile"
               width={200}
               height={200}
