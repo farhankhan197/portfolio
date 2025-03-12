@@ -48,10 +48,10 @@ export default function Home(): JSX.Element {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   const navItems: NavItem[] = [
-    { name: "About", path: "#about" },
-    { name: "Projects", path: "#projects" },
-    { name: "Skills", path: "#skills" },
-    { name: "Contact", path: "#contact" },
+    { name: "About", path: "/about" },
+    { name: "Projects", path: "/projects" },
+    { name: "Skills", path: "/skills" },
+    { name: "Contact", path: "/contact" },
   ];
 
   const skills: Skills[] = [
