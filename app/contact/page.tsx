@@ -104,10 +104,10 @@ export default function Contact(): JSX.Element {
             </Link>
           ))}
         </motion.div>
-          <p className="text-sm mt-6 ">Email me for urgent communication.</p>
+          <p className="text-sm mt-8">Email me for urgent communication.</p>
         <Link href="mailto:farhankhan.code@gmail.com" className="flex hover:underline items-center group gap-2 mt-2">
           <LinkIcon className="rotate-0 group-hover:rotate-45  transition-all ease-in-out transform"></LinkIcon>
-          <p className="mt-1 text-lg group hover:underline">farhankhan.code@gmail.com</p>
+          <p className="mt-1 mb-8 text-lg group hover:underline">farhankhan.code@gmail.com</p>
         </Link>
 
         <button className="inline-flex m-6 items-center gap-2 bg-green-100 dark:bg-green-800 text-green-800 shining-text dark:text-green-400 px-3 py-1 rounded-full text-sm font-medium hover:bg-green-200 dark:hover:bg-green-700 transition-colors whitespace-nowrap">
