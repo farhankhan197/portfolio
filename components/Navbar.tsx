@@ -40,7 +40,7 @@ export default function Navbar() {
         initial={{ y: 0, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeInOut" }}
-        className={`fixed left-0 right-0 flex justify-center z-40 transition-all duration-500 ease-in-out shadow-none transform ${
+        className={`fixed left-0 right-0 flex justify-center z-40 transition-all duration-500 mx-auto ease-in-out shadow-none transform ${
           isScrolled
             ? `top-0 shadow-none scale-100 px-8 py-4 bg-white dark:bg-[#0d0d0d] ${
                 isOpen ? "shadow-none" : "shadow-md dark:shadow-none]"
