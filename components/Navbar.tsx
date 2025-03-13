@@ -132,7 +132,7 @@ export default function Navbar() {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{
                   duration: 0.2,
-                  delay: i * 0.1,
+                  delay: i * 0.01,
                 }}
                 className="w-full text-center"
               >
