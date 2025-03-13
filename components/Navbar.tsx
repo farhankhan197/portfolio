@@ -119,7 +119,7 @@ export default function Navbar() {
               height: "0vh",
             }}
             transition={{
-              duration: 0.4,
+              duration: 0.2,
               ease: [0.4, 0.0, 0.2, 1],
             }}
             className="fixed top-0 left-0 flex flex-col items-center justify-center bg-white dark:bg-[#0d0d0d] z-30 origin-top w-full"
@@ -131,7 +131,7 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{
-                  duration: 0.3,
+                  duration: 0.2,
                   delay: i * 0.1,
                 }}
                 className="w-full text-center"
