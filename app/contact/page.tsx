@@ -89,7 +89,7 @@ export default function Contact(): JSX.Element {
 
         {/* Social Links */}
         <motion.div
-          className="flex gap-4 w-full max-w-xl sm:max-w-sm md:max-w-lg items-center justify-center px-4"
+          className="flex gap-4 w-full max-w-xl sm:max-w-sm md:max-w-lg mb-6 items-center justify-center px-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.4 }}
