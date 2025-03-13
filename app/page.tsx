@@ -245,7 +245,7 @@ export default function Home(): JSX.Element {
           <Link
             key={link.name}
             href={link.url}
-            className="bg-gray-300 dark:bg-gray-800 rounded-full hover:bg-gray-400 dark:hover:bg-gray-600 transition"
+            className="rounded-full hover:bg-gray-400 dark:hover:bg-gray-600 transition"
           >
             {link.icon}
           </Link>
