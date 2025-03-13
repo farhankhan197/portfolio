@@ -56,7 +56,7 @@ export default function Home(): JSX.Element {
 
   const skills: Skills[] = [
     {
-      name: "typescript",
+      name: "Javascript",
       icon: <GithubIcon className="h-5 w-5" />,
     },
     {
@@ -64,23 +64,48 @@ export default function Home(): JSX.Element {
       icon: <GithubIcon className="h-5 w-5" />,
     },
     {
-      name: "typescript",
+      name: "Python",
       icon: <GithubIcon className="h-5 w-5" />,
     },
+    {
+      name: "React",
+      icon: <GithubIcon className="h-5 w-5" />,
+
+    },
+    {
+      name: "Next.js",
+      icon: <GithubIcon className="h-5 w-5" />,
+    },
+    {
+      name: "Tailwind CSS",
+      icon: <GithubIcon className="h-5 w-5" />,
+    },
+      {
+      name: "Node.js",
+      icon: <GithubIcon className="h-5 w-5" />,
+      },
+      {
+      name: "Express",
+      icon: <GithubIcon className="h-5 w-5" />,
+      },
+      {
+      name: "MongoDB",
+      icon: <GithubIcon className="h-5 w-5" />,
+      },
   ];
   const Projects: Project[] = [
     {
-      title: "Starfield",
-      description: "A Next.js template for personal portfolios.",
+      title: "Retail Radar",
+      description: "A Dashboard for Retail Owners",
       url: "",
-      image: "/images/starfield.png",
+      image: "/images/retail-radar.png",
       techStack: [" Next.js ", " TypeScript ", " Tailwind CSS "],
     },
     {
-      title: "Starfield",
-      description: "A Next.js template for personal portfolios.",
-      url: "",
-      image: "/images/profile.jpg",
+      title: "Vizack Enterprises",
+      description: "A Next.js Website for Vizack Enterprises.",
+      url: "https://vizackenterprises.com",
+      image: "/images/vizack.png",
       techStack: [" Next.js ", " TypeScript ", " Tailwind CSS "],
     },
   ];
@@ -335,7 +360,7 @@ export default function Home(): JSX.Element {
           Skills
         </motion.h1>
         <motion.div
-          className="flex flex-wrap gap-4"
+          className="flex flex-wrap gap-4 mx-6 max-w-lg"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
@@ -345,7 +370,6 @@ export default function Home(): JSX.Element {
               key={skill.name}
               className="flex items-center gap-2 bg-gray-300 dark:bg-gray-800 rounded-full p-2"
             >
-              {skill.icon}
               <p>{skill.name}</p>
             </div>
           ))}

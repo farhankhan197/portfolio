@@ -10,7 +10,7 @@ export default function Skills(): JSX.Element {
     },
     {
       category: "Backend",
-      list: ["Node.js", "Express", "NestJS", "Django", "Spring Boot"],
+      list: ["Node.js", "Express", "Flask", "Django", ],
     },
     {
       category: "Databases",
@@ -22,7 +22,7 @@ export default function Skills(): JSX.Element {
     },
     {
       category: "Machine Learning",
-      list: ["Python", "TensorFlow", "PyTorch", "OpenCV"],
+      list: ["Python","SciKit Learn", "Scipy", "nltk", "TensorFlow", "PyTorch", "OpenCV"],
     },
   ];
 

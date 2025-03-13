@@ -75,16 +75,16 @@ export default function About(): JSX.Element {
           <h2 className="text-2xl font-semibold mb-4">What Excites Me?</h2>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-lg">
-            <span className="bg-gray-800 dark:bg-gray-200 dark:text-black p-3 rounded-lg text-center">
+            <span className="bg-gray-800 dark:bg-gray-700 dark:text-white p-2 rounded-lg text-center">
               Web Development
             </span>
-            <span className="bg-gray-800 dark:bg-gray-200 dark:text-black p-3 rounded-lg text-center">
+            <span className="bg-gray-800 dark:bg-gray-700 dark:text-white p-2 rounded-lg text-center">
               Machine Learning
             </span>
-            <span className="bg-gray-800 dark:bg-gray-200 dark:text-black p-3 rounded-lg text-center">
+            <span className="bg-gray-800 dark:bg-gray-700 dark:text-white p-2 rounded-lg text-center">
               UI/UX Design
             </span>
-            <span className="bg-gray-800 dark:bg-gray-200 dark:text-black p-3 rounded-lg text-center">
+            <span className="bg-gray-800 dark:bg-gray-700 dark:text-white p-2 rounded-lg text-center">
               Automating Workflows
             </span>
           </div>
@@ -101,12 +101,6 @@ export default function About(): JSX.Element {
 
           <div className="flex flex-wrap justify-center gap-4">
             <Link
-              href="https://github.com/farhankhan197"
-              className="bg-gray-300 dark:bg-gray-800 rounded-full hover:bg-gray-400 dark:hover:bg-gray-600 transition p-3 text-sm text-center w-28"
-            >
-              GitHub
-            </Link>
-            <Link
               href="https://twitter.com/Farhankhan_twt"
               className="bg-gray-300 dark:bg-gray-800 rounded-full hover:bg-gray-400 dark:hover:bg-gray-600 transition p-3 text-sm text-center w-28"
             >
@@ -117,6 +111,12 @@ export default function About(): JSX.Element {
               className="bg-gray-300 dark:bg-gray-800 rounded-full hover:bg-gray-400 dark:hover:bg-gray-600 transition p-3 text-sm text-center w-28"
             >
               LinkedIn
+            </Link>
+            <Link
+              href="https://github.com/farhankhan197"
+              className="bg-gray-300 dark:bg-gray-800 rounded-full hover:bg-gray-400 dark:hover:bg-gray-600 transition p-3 text-sm text-center w-28"
+            >
+              GitHub
             </Link>
             <Link
               href="https://leetcode.com/farhankhan19"

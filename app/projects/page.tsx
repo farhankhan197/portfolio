@@ -4,30 +4,22 @@ import NavBar from "@/components/Navbar";
 import Link from "next/link";
 import { JSX } from "react";
 const projects = [
-  {
-    title: "Dynamic Navbar Animation",
-    description:
-      "A Starfield-themed floating navbar that expands seamlessly like YouTube’s mini-player.",
-    link: "https://github.com/farhankhan197/dynamic-navbar",
-  },
-  {
-    title: "AI-Powered Content Generator",
-    description:
-      "Trained a small-scale LLM on 2800 engineering papers to generate research papers.",
-    link: "https://github.com/farhankhan197/ai-content-generator",
-  },
-  {
-    title: "Full-Stack Blogging Platform",
-    description:
-      "Developed a modern blogging platform with Next.js, TypeScript, and MongoDB.",
-    link: "https://github.com/farhankhan197/fullstack-blog",
-  },
-  {
-    title: "Cybersecurity Dashboard",
-    description:
-      "Built an interactive dashboard to visualize security threats and vulnerabilities in real-time.",
-    link: "https://github.com/farhankhan197/cybersecurity-dashboard",
-  },
+ {
+    title: "Starfield Portfolio",
+    description: "A personal portfolio website inspired by space. Built with Next.js.",
+    link: "https://farhankhan.vercel.app/",
+ },
+ {
+    title:"Vizack Enterprises",
+    description:"A website for a construction company built with Next.js.",
+    link:"https://vizackenterprises.com/",
+
+ },
+ {
+    title: "Retail Radar",
+    description: "A retail analytics dashboard for tracking sales data.",
+    link: "https://retail-radar-bice.vercel.app/",
+ }
 ];
 
 export default function Projects(): JSX.Element {
