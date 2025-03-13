@@ -108,7 +108,7 @@ draw(ctx: CanvasRenderingContext2D) {
 
 function setup() {
 if (stars.length === 0) {
-stars = Array.from({ length: 4}, () => new Star());
+stars = Array.from({ length: 11}, () => new Star());
 } else {
 stars = stars.map((existingStar) => new Star(existingStar));
 }
