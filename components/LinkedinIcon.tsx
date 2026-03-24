@@ -2,7 +2,7 @@ import { useTheme } from "next-themes";
 const LinkedinIcon = ({ size = 24, className = "" }) => {
   const { theme } = useTheme();
 
-  const fillColor = theme === "dark" ? "#ffffff" : "#000000";
+  const fillColor = (theme === "dark" || theme === undefined) ? "#ffffff" : "#000000";
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

@@ -2,7 +2,7 @@ import { useTheme } from "next-themes";
 
 const GithubIcon = ({size=24, className=""}) => {
   const { theme } = useTheme();
-  const fillcolor = theme === "dark" ? "#fff" : "#000";
+  const fillcolor = (theme === "dark" || theme === undefined) ? "#fff" : "#000";
 
   return (
     <svg

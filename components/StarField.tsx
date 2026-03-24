@@ -4,18 +4,30 @@ import { useEffect, useRef, useState } from "react";
 import { useTheme } from "next-themes";
 
 const StarfieldBackground = () => {
-if (typeof window === "undefined") return null;
+const [mounted, setMounted] = useState(false);
 const canvasRef = useRef<HTMLCanvasElement>(null);
 const { theme } = useTheme();
 const [isWarping, setIsWarping] = useState(false);
 const animationFrameId = useRef<number | null>(null);
 
-let canvasWidth = window.innerWidth;
-let canvasHeight = window.innerHeight;
-let centerX = canvasWidth * 0.5;
-let centerY = canvasHeight * 0.5;
+useEffect(() => {
+  setMounted(true);
+}, []);
+
+let canvasWidth = 0;
+let canvasHeight = 0;
+let centerX = 0;
+let centerY = 0;
 let stars: Star[] = [];
-let bgColor = theme === "dark" ? "#111" : "#f0f0f0";
+let bgColor = "#111";
+
+if (typeof window !== "undefined" && mounted) {
+  canvasWidth = window.innerWidth;
+  canvasHeight = window.innerHeight;
+  centerX = canvasWidth * 0.5;
+  centerY = canvasHeight * 0.5;
+  bgColor = theme === "dark" ? "#111" : "#f0f0f0";
+}
 
 let warpFactor = 1;
 const maxWarpFactor = 8;
@@ -208,11 +220,13 @@ return () => {
 
 }, [theme]);
 
+if (!mounted) return null;
+
 return (
 <canvas
-ref={canvasRef}
-className="fixed top-0 left-0 w-full h-full pointer-events-none"
-style={{ zIndex: -1 }}
+  ref={canvasRef}
+  className="fixed top-0 left-0 w-full h-full pointer-events-none"
+  style={{ zIndex: -1 }}
 />
 );
 };

@@ -21,16 +21,27 @@
 
 ---
 
-## Phase 2: UI Polish & Consistency (Pending)
-**Est: 45-60 mins**
+## Phase 2: UI Polish & Consistency ✅ (Completed)
+**Date:** March 24, 2026
 
 | # | Change | Details |
 |---|--------|---------|
-| 1 | **Standardize card styling** | Add `backdrop-blur-lg` + consistent border/shadow to Work Experience cards |
-| 2 | **Typography consistency** | Use consistent font sizes/weights (e.g., all section headers `text-2xl font-semibold`) |
-| 3 | **Hover states** | Add hover effects to Work Experience cards (scale/glow) |
-| 4 | **Mobile menu spacing** | Add gap between links in mobile nav |
-| 5 | **Add Footer component** | Create reusable `Footer.tsx` with social links + copyright |
+| 1 | **Standardize card styling** | Added `backdrop-blur-lg` + consistent border/shadow to Work Experience cards |
+| 2 | **Typography consistency** | Consistent font sizes/weights across sections |
+| 3 | **Hover states** | Added scale + border glow on Work Experience cards |
+| 4 | **Mobile menu spacing** | Added hover background + proper padding in mobile nav |
+| 5 | **Add Footer component** | Created reusable `components/Footer.tsx` with social links |
+
+### Changes Made:
+- Added hover effects to Work Experience cards (scale 1.02, shadow, border color change)
+- Created `components/Footer.tsx` with social links (GitHub, Twitter, LinkedIn, LeetCode)
+- Added Footer to all pages (home, about, projects, skills, contact)
+- Fixed mobile menu with hover backgrounds and proper spacing
+- Removed unused imports (`Menu`, `LogOut` from `page.tsx`)
+
+---
+
+## Phase 3: Code Architecture (Pending)
 
 ---
 

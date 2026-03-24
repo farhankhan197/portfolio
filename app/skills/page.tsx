@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import NavBar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import { JSX } from "react";
 export default function Skills(): JSX.Element {
   const skills = [
@@ -72,9 +73,7 @@ export default function Skills(): JSX.Element {
           ))}
         </motion.div>
 
-        <p className="mt-10 text-xs text-gray-500 text-center">
-          Built with passion by Farhan.
-        </p>
+        <Footer />
       </div>
     </>
   );

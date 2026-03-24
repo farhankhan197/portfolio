@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import NavBar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import Link from "next/link";
 import { JSX } from "react/jsx-runtime";
 
@@ -127,9 +128,7 @@ export default function About(): JSX.Element {
           </div>
         </motion.div>
 
-        <p className="mt-10 text-xs text-gray-500 text-center">
-          Built with dedication by Farhan.
-        </p>
+        <Footer />
       </div>
     </>
   );

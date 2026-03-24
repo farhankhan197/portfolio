@@ -3,7 +3,7 @@ import { useTheme } from "next-themes";
 const LeetCodeIcon = ({ size = 24, className = "" }) => {
   const { resolvedTheme } = useTheme();
 
-  const fillColor = resolvedTheme === "dark" ? "#ffffff" : "#000000";
+  const fillColor = (resolvedTheme === "dark" || resolvedTheme === undefined) ? "#ffffff" : "#000000";
 
   return (
     <svg

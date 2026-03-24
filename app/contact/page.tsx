@@ -1,15 +1,20 @@
 "use client";
 import { motion } from "framer-motion";
 import NavBar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import Link from "next/link";
 import { useState } from "react";
 import LinkedinIcon from "@/components/LinkedinIcon";
 import GithubIcon from "@/components/GithubIcon";
 import TwitterIcon from "@/components/TwitterIcon";
 import DiscordIcon from "@/components/DiscordIcon";
-import LeetCodeIcon from "@/components/LeetcodeIcon";
+import dynamic from "next/dynamic";
 import {Instagram,LinkIcon} from "lucide-react";
 import { JSX } from "react/jsx-runtime";
+
+const LeetCodeIcon = dynamic(() => import("@/components/LeetcodeIcon"), {
+  ssr: false,
+});
 export default function Contact(): JSX.Element {
   const [formData, setFormData] = useState({
     name: "",
@@ -217,9 +222,7 @@ export default function Contact(): JSX.Element {
           </button>
         </motion.form>
 
-        <p className="mt-10 text-xs text-gray-500 text-center">
-          Built with passion by Farhan.
-        </p>
+        <Footer />
       </div>
     </>
   );

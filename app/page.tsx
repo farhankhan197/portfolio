@@ -3,7 +3,7 @@ import Image from "next/image";
 import { ModeToggle } from "@/components/ModeToggle";
 import Link from "next/link";
 import { useState, JSX } from "react";
-import { ChevronRight, LinkIcon, Instagram, Menu, LogOut } from "lucide-react";
+import { ChevronRight, LinkIcon, Instagram } from "lucide-react";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import LinkedinIcon from "@/components/LinkedinIcon";
@@ -11,6 +11,7 @@ import GithubIcon from "@/components/GithubIcon";
 import TwitterIcon from "@/components/TwitterIcon";
 import DiscordIcon from "@/components/DiscordIcon";
 import NavBar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const LeetCodeIcon = dynamic(() => import("@/components/LeetcodeIcon"), {
   ssr: false,
@@ -273,9 +274,10 @@ export default function Home(): JSX.Element {
           <motion.section
             key={experience.company}
             initial={{ opacity: 0, y: 10 }}
+            whileHover={{ scale: 1.02 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="border border-gray-800 w-full max-w-lg m-4 bg-transparent backdrop-blur-lg rounded-xl shadow-md p-4"
+            className="border border-gray-800 w-full max-w-lg m-4 bg-transparent backdrop-blur-lg rounded-xl shadow-md p-4 hover:shadow-lg hover:border-gray-600 dark:hover:border-gray-500 transition-all cursor-pointer"
           >
             <div className="flex items-center gap-4">
               <Image
@@ -375,7 +377,7 @@ export default function Home(): JSX.Element {
           ))}
         </motion.div>
 
-        <p className="mt-10 text-xs">Built with ❤️ by Farhan.</p>
+        <Footer />
       </div>
     </>
   );
