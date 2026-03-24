@@ -1,36 +1,6 @@
 "use client";
 import Link from "next/link";
-import GithubIcon from "@/components/GithubIcon";
-import TwitterIcon from "@/components/TwitterIcon";
-import LinkedinIcon from "@/components/LinkedinIcon";
-import dynamic from "next/dynamic";
-
-const LeetCodeIcon = dynamic(() => import("@/components/LeetcodeIcon"), {
-  ssr: false,
-});
-
-const socialLinks = [
-  {
-    name: "GitHub",
-    url: "https://github.com/farhankhan197",
-    icon: <GithubIcon className="h-5 w-5" />,
-  },
-  {
-    name: "Twitter",
-    url: "https://twitter.com/Farhankhan_twt",
-    icon: <TwitterIcon className="h-5 w-5" />,
-  },
-  {
-    name: "LinkedIn",
-    url: "https://www.linkedin.com/in/farhan-khan-71a857296/",
-    icon: <LinkedinIcon className="h-5 w-5" />,
-  },
-  {
-    name: "LeetCode",
-    url: "https://leetcode.com/farhankhan19",
-    icon: <LeetCodeIcon className="h-5 w-5" />,
-  },
-];
+import { socialLinks, getSocialIcon } from "@/lib/data";
 
 export default function Footer() {
   return (
@@ -46,7 +16,7 @@ export default function Footer() {
               className="text-gray-400 hover:text-white transition-colors"
               aria-label={link.name}
             >
-              {link.icon}
+              {getSocialIcon(link.iconName)}
             </Link>
           ))}
         </div>

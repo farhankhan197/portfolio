@@ -3,19 +3,9 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { ModeToggle } from "@/components/ModeToggle";
 import { motion, AnimatePresence } from "framer-motion";
+import { navItems } from "@/lib/data";
 
-interface NavItem {
-  name: string;
-  path: string;
-}
-
-const navItems: NavItem[] = [
-  { name: "Home", path:"/"},
-  { name: "About", path: "/about" },
-  { name: "Projects", path: "/projects" },
-  { name: "Skills", path: "/skills" },
-  { name: "Contact", path: "/contact" },
-];
+const navItemsWithHome = [{ name: "Home", path: "/" }, ...navItems];
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -66,7 +56,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            {navItems.map((item) => (
+            {navItemsWithHome.map((item) => (
               <Link
                 key={item.name}
                 href={item.path}
@@ -124,7 +114,7 @@ export default function Navbar() {
             }}
             className="fixed top-0 left-0 flex flex-col items-center justify-center bg-white dark:bg-[#0d0d0d] z-30 origin-top w-full"
           >
-            {navItems.map((item, i) => (
+            {navItemsWithHome.map((item, i) => (
               <motion.div
                 key={item.name}
                 initial={{ opacity: 0, y: -20 }}

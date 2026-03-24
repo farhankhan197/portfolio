@@ -1,178 +1,16 @@
 "use client";
 import Image from "next/image";
-import { ModeToggle } from "@/components/ModeToggle";
 import Link from "next/link";
 import { useState, JSX } from "react";
-import { ChevronRight, LinkIcon, Instagram } from "lucide-react";
-import dynamic from "next/dynamic";
+import { LinkIcon } from "lucide-react";
 import { motion } from "framer-motion";
-import LinkedinIcon from "@/components/LinkedinIcon";
-import GithubIcon from "@/components/GithubIcon";
-import TwitterIcon from "@/components/TwitterIcon";
-import DiscordIcon from "@/components/DiscordIcon";
 import NavBar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
-const LeetCodeIcon = dynamic(() => import("@/components/LeetcodeIcon"), {
-  ssr: false,
-});
-
-interface Skills {
-  name: string;
-  icon: JSX.Element;
-}
-
-type NavItem = { name: string; path: string };
-interface SocialLink {
-  name: string;
-  url: string;
-  icon: JSX.Element;
-}
-
-interface WorkExperience {
-  company: string;
-  logo: string;
-  jobTitle: string;
-  duration: string;
-  url: string;
-}
-
-interface Project {
-  title: string;
-  description: string;
-  url: string;
-  image: string;
-  techStack?: string[];
-}
+import SkillBadge from "@/components/SkillBadge";
+import { skills, projects, workExperience, socialLinks, getSocialIcon } from "@/lib/data";
 
 export default function Home(): JSX.Element {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-
-  const navItems: NavItem[] = [
-    { name: "About", path: "/about" },
-    { name: "Projects", path: "/projects" },
-    { name: "Skills", path: "/skills" },
-    { name: "Contact", path: "/contact" },
-  ];
-
-  const skills: Skills[] = [
-    {
-      name: "Javascript",
-      icon: <GithubIcon className="h-5 w-5" />,
-    },
-    {
-      name: "typescript",
-      icon: <GithubIcon className="h-5 w-5" />,
-    },
-    {
-      name: "Python",
-      icon: <GithubIcon className="h-5 w-5" />,
-    },
-    {
-      name: "React",
-      icon: <GithubIcon className="h-5 w-5" />,
-
-    },
-    {
-      name: "Next.js",
-      icon: <GithubIcon className="h-5 w-5" />,
-    },
-    {
-      name: "Tailwind CSS",
-      icon: <GithubIcon className="h-5 w-5" />,
-    },
-      {
-      name: "Node.js",
-      icon: <GithubIcon className="h-5 w-5" />,
-      },
-      {
-      name: "Express",
-      icon: <GithubIcon className="h-5 w-5" />,
-      },
-      {
-      name: "MongoDB",
-      icon: <GithubIcon className="h-5 w-5" />,
-      },
-  ];
-  const Projects: Project[] = [
-    {
-      title: "Retail Radar",
-      description: "A Dashboard for Retail Owners",
-      url: "",
-      image: "/images/retail-radar.png",
-      techStack: [" Next.js ", " TypeScript ", " Tailwind CSS "],
-    },
-    {
-      title: "Vizack Enterprises",
-      description: "A Next.js Website for Vizack Enterprises.",
-      url: "https://vizackenterprises.com",
-      image: "/images/vizack.png",
-      techStack: [" Next.js ", " TypeScript ", " Tailwind CSS "],
-    },
-  ];
-  const workExperience: WorkExperience[] = [
-    {
-      company: "The Catchy Pixel",
-      logo: "/images/thecatchypixel_logo.jpg",
-      jobTitle: "Co-Founder",
-      duration: "Mar 2025 - Present",
-      url: "https://x.com/thecatchypixel",
-    },
-    {
-      company: "Edslash",
-      logo: "/images/edslash_logo.png",
-      jobTitle: "Full Stack Intern",
-      duration: "Apr 2024 - Jun 2024",
-      url: "https://edslash.com",
-    },
-    {
-      company: "Vizack",
-      logo: "/images/vizack_logo.jpg",
-      jobTitle: "Full Stack Intern",
-      duration: "Jan 2024 - Mar 2024",
-      url: "https://vizackenterprises.com",
-    },
-    {
-      company: "Spark Club",
-      logo: "/images/spark_club_logo.jpg",
-      jobTitle: "Founder",
-      duration: "March 2024 - Present",
-      url: "https://chat.whatsapp.com/L1TnMG7ntdw87JRw6vpovO",
-    },
-  ];
-
-  const socialLinks: SocialLink[] = [
-    {
-      name: "GitHub",
-      url: "https://github.com/farhankhan197",
-      icon: <GithubIcon className="h-5 w-5" />,
-    },
-    {
-      name: "Twitter",
-      url: "https://twitter.com/Farhankhan_twt",
-      icon: <TwitterIcon className="h-5 w-5" />,
-    },
-    {
-      name: "LeetCode",
-      url: "https://leetcode.com/farhankhan19",
-      icon: <LeetCodeIcon className="h-5 w-5" />,
-    },
-    {
-      name: "LinkedIn",
-      url: "https://www.linkedin.com/in/farhan-khan-71a857296/",
-      icon: <LinkedinIcon className="h-5 w-5" />,
-    },
-    {
-      name: "Instagram",
-      url: "https://www.instagram.com/musunoa/",
-      icon: <Instagram className="h-5 w-5" />,
-    },
-    {
-      name: "Discord",
-      url: "/Farhan_Khan_Resume.pdf",
-      icon: <DiscordIcon className="h-5 w-5" />,
-    },
-  ];
 
   const toggleMenu = (): void => setIsMenuOpen(!isMenuOpen);
 
@@ -248,7 +86,7 @@ export default function Home(): JSX.Element {
             href={link.url}
             className="rounded-full hover:bg-gray-400 dark:hover:bg-gray-600 transition-all ease-in-out transform scale-100 hover:scale-105"
           >
-            {link.icon}
+            {getSocialIcon(link.iconName)}
           </Link>
         ))}
       </motion.div>
@@ -309,7 +147,7 @@ export default function Home(): JSX.Element {
         >
           Projects
         </motion.h1>
-        {Projects.map((project) => (
+        {projects.map((project) => (
           <motion.section
             key={project.title}
             initial={{ opacity: 0, y: 10 }}
@@ -345,8 +183,7 @@ export default function Home(): JSX.Element {
                 {project.description}
               </p>
              <div className="mt-4 flex gap-4">
-              <Link href = ""> <GithubIcon/> </Link> 
-             <Link href = "" className="rotate-0 hover:rotate-45 transition-all ease-in-out transform"><LinkIcon/></Link>
+              <Link href = "" className="rotate-0 hover:rotate-45 transition-all ease-in-out transform"><LinkIcon/></Link>
              </div>
             </div>
           </motion.section>
@@ -368,12 +205,7 @@ export default function Home(): JSX.Element {
           transition={{ duration: 0.6 }}
         >
           {skills.map((skill) => (
-            <div
-              key={skill.name}
-              className="flex items-center gap-2 bg-gray-300 dark:bg-gray-800 rounded-full p-2"
-            >
-              <p>{skill.name}</p>
-            </div>
+            <SkillBadge key={skill.name} skill={skill} />
           ))}
         </motion.div>
 

@@ -3,29 +3,9 @@ import { motion } from "framer-motion";
 import NavBar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { JSX } from "react";
+import { skillCategories } from "@/lib/data";
+
 export default function Skills(): JSX.Element {
-  const skills = [
-    {
-      category: "Frontend",
-      list: ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js"],
-    },
-    {
-      category: "Backend",
-      list: ["Node.js", "Express", "Flask", "Django", ],
-    },
-    {
-      category: "Databases",
-      list: ["MongoDB", "PostgreSQL", "MySQL", "Firebase"],
-    },
-    {
-      category: "DevOps & Tools",
-      list: ["Docker", "Kubernetes", "Git", "CI/CD", "Linux"],
-    },
-    {
-      category: "Machine Learning",
-      list: ["Python","SciKit Learn", "Scipy", "nltk", "TensorFlow", "PyTorch", "OpenCV"],
-    },
-  ];
 
   return (
     <>
@@ -53,7 +33,7 @@ export default function Skills(): JSX.Element {
           transition={{ duration: 0.8 }}
           className="w-full max-w-3xl grid grid-cols-1 md:grid-cols-2 gap-6"
         >
-          {skills.map((skill, index) => (
+          {skillCategories.map((skill, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 10 }}
