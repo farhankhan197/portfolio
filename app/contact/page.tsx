@@ -62,9 +62,34 @@ export default function Contact(): JSX.Element {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form Data Submitted:", formData);
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitStatus("success");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setSubmitStatus("error");
+      }
+    } catch {
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -173,11 +198,22 @@ export default function Contact(): JSX.Element {
             ></textarea>
           </div>
 
+          {submitStatus === "success" && (
+            <div className="mb-4 p-3 bg-green-500/20 text-green-400 rounded-md text-center">
+              Message sent successfully! I'll get back to you soon.
+            </div>
+          )}
+          {submitStatus === "error" && (
+            <div className="mb-4 p-3 bg-red-500/20 text-red-400 rounded-md text-center">
+              Failed to send message. Please try again or email me directly.
+            </div>
+          )}
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 transition"
+            disabled={isSubmitting}
+            className="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Send Message
+            {isSubmitting ? "Sending..." : "Send Message"}
           </button>
         </motion.form>
 
