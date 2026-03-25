@@ -11,6 +11,7 @@ const [isWarping, setIsWarping] = useState(false);
 const animationFrameId = useRef<number | null>(null);
 
 useEffect(() => {
+  console.log("StarField: mounted, theme =", theme);
   setMounted(true);
 }, []);
 
@@ -26,7 +27,8 @@ if (typeof window !== "undefined" && mounted) {
   canvasHeight = window.innerHeight;
   centerX = canvasWidth * 0.5;
   centerY = canvasHeight * 0.5;
-  bgColor = theme === "dark" ? "#111" : "#f0f0f0";
+  bgColor = theme === "light" ? "#f0f0f0" : "#111";
+  console.log("StarField: bgColor set to", bgColor, "theme =", theme);
 }
 
 let warpFactor = 1;
@@ -101,7 +103,7 @@ draw(ctx: CanvasRenderingContext2D) {
       ctx.moveTo(startPoint.x, startPoint.y);  
       ctx.lineTo(endPoint.x, endPoint.y);  
       ctx.strokeStyle =  
-        theme === "dark"  
+        theme !== "light"  
           ? `rgba(255, 255, 255, ${opacity})`  
           : `rgba(0, 0, 0, ${opacity})`;  
       ctx.lineWidth = radius * 0.8 * (1 - i / this.trail.length);  
@@ -112,7 +114,8 @@ draw(ctx: CanvasRenderingContext2D) {
   ctx.beginPath();  
   ctx.arc(screenX, screenY, radius, 0, Math.PI * 2, false);  
   ctx.closePath();  
-  ctx.fillStyle = theme === "dark" ? "#fff" : "#000";  
+  ctx.fillStyle = theme !== "light" ? "#fff" : "#000";  
+  console.log("Star.draw: theme =", theme, "fillStyle =", theme !== "light" ? "#fff" : "#000");
   ctx.fill();  
 }
 
@@ -127,8 +130,12 @@ stars = stars.map((existingStar) => new Star(existingStar));
 }
 
 function draw() {
+console.log("draw() called");
 const canvas = canvasRef.current;
-if (!canvas) return;
+if (!canvas) {
+  console.log("draw(): canvas is null!");
+  return;
+}
 const ctx = canvas.getContext("2d");
 if (!ctx) return;
 
@@ -208,19 +215,20 @@ return () => {
 }, []);
 
 useEffect(() => {
-resizeCanvas();
-window.addEventListener("resize", resizeCanvas);
-animationFrameId.current = requestAnimationFrame(draw);
+  resizeCanvas();
+  window.addEventListener("resize", resizeCanvas);
+  animationFrameId.current = requestAnimationFrame(draw);
 
-return () => {  
-  window.removeEventListener("resize", resizeCanvas);  
-  if (animationFrameId.current)  
-    cancelAnimationFrame(animationFrameId.current);  
-};
+  return () => {  
+    window.removeEventListener("resize", resizeCanvas);  
+    if (animationFrameId.current)  
+      cancelAnimationFrame(animationFrameId.current);  
+  };
 
-}, [theme]);
+}, [theme, mounted]);
 
 if (!mounted) return null;
+console.log("StarField: rendering, mounted =", mounted, "theme =", theme);
 
 return (
 <canvas
