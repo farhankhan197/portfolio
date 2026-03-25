@@ -151,3 +151,5 @@ function ParticleVoid({ isDarkMode }: ParticleVoidProps) {
     </points>
   );
 }
+
+export default ParticleVoid;

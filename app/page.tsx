@@ -8,10 +8,12 @@ import NavBar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SkillBadge from "@/components/SkillBadge";
 import { skills, projects, workExperience, socialLinks, getSocialIcon } from "@/lib/data";
+import { useTheme } from "next-themes";
+
 
 export default function Home(): JSX.Element {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-
+  const { theme } = useTheme();
   const toggleMenu = (): void => setIsMenuOpen(!isMenuOpen);
 
   return (
@@ -65,9 +67,10 @@ export default function Home(): JSX.Element {
               width={200}
               height={200}
               className="rounded-full m-4"
-            />
+              />
           </div>
           <h1 className="text-3xl font-extrabold">Farhan Khan</h1>
+             
           <p className="text-left w-full max-w-lg p-6 bg-transparent backdrop-blur-lg rounded-xl shadow-md">
             I am a third-year CS student, passionate Full-Stack Developer, and
             Machine Learning Engineer with expertise in building

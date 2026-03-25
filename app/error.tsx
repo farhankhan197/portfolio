@@ -2,7 +2,9 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-
+import ParticleVoid from "@/components/particleVoid";
+import { Canvas } from "@react-three/fiber";
+import { useTheme } from "next-themes";
 export default function Error({
   error,
   reset,
@@ -10,6 +12,8 @@ export default function Error({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  const { resolvedTheme } = useTheme();
+
   useEffect(() => {
     console.error(error);
   }, [error]);
@@ -26,6 +30,14 @@ export default function Error({
         <p className="text-gray-400 mb-8">
           An unexpected error occurred. Please try again or return to the homepage.
         </p>
+        <div className="mx-auto" style={{ width: 200, height: 200 }}>
+          <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
+            <ParticleVoid isDarkMode={resolvedTheme === 'dark'} />
+          </Canvas>
+          <p className="text-sm text-gray-500 dark:text-gray-400 tracking-widest mt-4">
+            Loading...
+          </p>
+        </div>
         <div className="flex gap-4 justify-center">
           <button
             onClick={reset}

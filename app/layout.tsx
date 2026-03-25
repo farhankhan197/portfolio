@@ -3,6 +3,8 @@ import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import StarfieldBackground from "@/components/StarField";
+import ParticleVoid from "@/components/particleVoid";
+import { Canvas } from "@react-three/fiber";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -94,6 +96,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <StarfieldBackground />
+            
             <div id="main-content">
               {children}
             </div>
