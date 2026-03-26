@@ -23,7 +23,7 @@ export default function SkillBadge({ skill }: SkillBadgeProps) {
   const icon = skill.iconName ? skillIcons[skill.iconName] : <GithubIcon className="h-4 w-4" />;
 
   return (
-    <div className="flex items-center gap-2 bg-gray-300 dark:bg-gray-800 rounded-full px-4 py-2 transition-transform hover:scale-105">
+    <div className="flex items-center gap-2 bg-muted rounded-full px-4 py-2 transition-transform hover:scale-105">
       {icon}
       <span className="text-sm font-medium">{skill.name}</span>
     </div>

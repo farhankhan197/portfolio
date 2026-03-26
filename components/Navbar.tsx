@@ -32,11 +32,11 @@ export default function Navbar() {
         transition={{ duration: 0.6, ease: "easeInOut" }}
         className={`fixed left-0 right-0 flex justify-center z-40 transition-all duration-500 mx-auto ease-in-out shadow-none transform ${
           isScrolled
-            ? `top-0 shadow-none scale-100 px-8 py-4 bg-white dark:bg-[#0d0d0d] ${
-                isOpen ? "shadow-none" : "shadow-md dark:shadow-none]"
+            ? `top-0 shadow-none scale-100 px-8 py-4 bg-background ${
+                isOpen ? "shadow-none" : "shadow-md"
               } rounded-none`
-            : `top-0 scale-100 max-w-5xl px-6 py-4 bg-white dark:bg-[#0d0d0d] ${
-                isOpen ? "shadow-none" : "shadow-lg dark:shadow-none"
+            : `top-0 scale-100 max-w-5xl px-6 py-4 bg-background ${
+                isOpen ? "shadow-none" : "shadow-lg"
               } rounded-lg`
         }`}
       >
@@ -45,7 +45,7 @@ export default function Navbar() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-md font-semibold text-black dark:text-white"
+            className="text-md font-semibold text-foreground"
           >
             Starfield
           </motion.h1>
@@ -60,7 +60,7 @@ export default function Navbar() {
               <Link
                 key={item.name}
                 href={item.path}
-                className="hover:text-gray-600 dark:hover:text-gray-300 hover:underline transition-colors text-sm font-medium text-black dark:text-white"
+                className="hover:text-muted-foreground hover:underline transition-colors text-sm font-medium text-foreground"
               >
                 {item.name}
               </Link>
@@ -80,9 +80,9 @@ export default function Navbar() {
               aria-label={isOpen ? "Close menu" : "Open menu"}
             >
               {isOpen ? (
-                <X className="h-6 w-6 text-black dark:text-white" />
+                <X className="h-6 w-6 text-foreground" />
               ) : (
-                <Menu className="h-6 w-6 text-black dark:text-white" />
+                <Menu className="h-6 w-6 text-foreground" />
               )}
             </button>
           </motion.div>
@@ -112,7 +112,7 @@ export default function Navbar() {
               duration: 0.2,
               ease: [0.4, 0.0, 0.2, 1],
             }}
-            className="fixed top-0 left-0 flex flex-col items-center justify-center bg-white dark:bg-[#0d0d0d] z-30 origin-top w-full"
+            className="fixed top-0 left-0 flex flex-col items-center justify-center bg-background z-30 origin-top w-full"
           >
             {navItemsWithHome.map((item, i) => (
               <motion.div
@@ -129,7 +129,7 @@ export default function Navbar() {
                 <Link
                   href={item.path}
                   onClick={() => setIsOpen(false)}
-                  className="text-lg font-medium text-black dark:text-white block py-4 px-4 -mx-4 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                  className="text-lg font-medium text-foreground block py-4 px-4 -mx-4 hover:bg-accent transition-colors"
                 >
                   {item.name}
                 </Link>

@@ -8,7 +8,7 @@ import { JSX } from "react/jsx-runtime";
 export default function About(): JSX.Element {
   return (
     <>
-      <div className="min-h-screen flex flex-col items-center p-6 bg-transparent text-black dark:text-white">
+      <div className="min-h-screen flex flex-col items-center p-6 bg-transparent text-foreground">
         {/* Navigation Bar */}
         <NavBar />
 
@@ -46,7 +46,7 @@ export default function About(): JSX.Element {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="w-full max-w-3xl bg-transparent backdrop-blur-lg rounded-xl shadow-md p-6 border border-gray-800"
+          className="w-full max-w-3xl bg-transparent backdrop-blur-lg rounded-xl shadow-md p-6 border border-border"
         >
           <h2 className="text-2xl font-semibold mb-4">My Journey</h2>
 
@@ -76,16 +76,16 @@ export default function About(): JSX.Element {
           <h2 className="text-2xl font-semibold mb-4">What Excites Me?</h2>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-lg">
-            <span className="bg-gray-800 dark:bg-gray-700 dark:text-white p-2 rounded-lg text-center">
+            <span className="bg-muted text-muted-foreground p-2 rounded-lg text-center">
               Web Development
             </span>
-            <span className="bg-gray-800 dark:bg-gray-700 dark:text-white p-2 rounded-lg text-center">
+            <span className="bg-muted text-muted-foreground p-2 rounded-lg text-center">
               Machine Learning
             </span>
-            <span className="bg-gray-800 dark:bg-gray-700 dark:text-white p-2 rounded-lg text-center">
+            <span className="bg-muted text-muted-foreground p-2 rounded-lg text-center">
               UI/UX Design
             </span>
-            <span className="bg-gray-800 dark:bg-gray-700 dark:text-white p-2 rounded-lg text-center">
+            <span className="bg-muted text-muted-foreground p-2 rounded-lg text-center">
               Automating Workflows
             </span>
           </div>
@@ -103,25 +103,25 @@ export default function About(): JSX.Element {
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               href="https://twitter.com/Farhankhan_twt"
-              className="bg-gray-300 dark:bg-gray-800 rounded-full hover:bg-gray-400 dark:hover:bg-gray-600 transition p-3 text-sm text-center w-28"
+              className="bg-muted text-muted-foreground rounded-full hover:bg-muted-foreground/20 transition p-3 text-sm text-center w-28"
             >
               Twitter
             </Link>
             <Link
               href="https://www.linkedin.com/in/farhan-khan-71a857296/"
-              className="bg-gray-300 dark:bg-gray-800 rounded-full hover:bg-gray-400 dark:hover:bg-gray-600 transition p-3 text-sm text-center w-28"
+              className="bg-muted text-muted-foreground rounded-full hover:bg-muted-foreground/20 transition p-3 text-sm text-center w-28"
             >
               LinkedIn
             </Link>
             <Link
               href="https://github.com/farhankhan197"
-              className="bg-gray-300 dark:bg-gray-800 rounded-full hover:bg-gray-400 dark:hover:bg-gray-600 transition p-3 text-sm text-center w-28"
+              className="bg-muted text-muted-foreground rounded-full hover:bg-muted-foreground/20 transition p-3 text-sm text-center w-28"
             >
               GitHub
             </Link>
             <Link
               href="https://leetcode.com/farhankhan19"
-              className="bg-gray-300 dark:bg-gray-800 rounded-full hover:bg-gray-400 dark:hover:bg-gray-600 transition p-3 text-sm text-center w-28"
+              className="bg-muted text-muted-foreground rounded-full hover:bg-muted-foreground/20 transition p-3 text-sm text-center w-28"
             >
               LeetCode
             </Link>

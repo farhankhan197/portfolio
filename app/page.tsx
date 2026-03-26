@@ -18,7 +18,7 @@ export default function Home(): JSX.Element {
 
   return (
     <>
-      <div className="min-h-screen flex flex-col items-center p-6 bg-transparent text-black dark:text-white">
+      <div className="min-h-screen flex flex-col items-center p-6 bg-transparent text-foreground">
         {/* Navigation Bar - Dropdown Menu */}
 
         {/* <div className="fixed top-5 left-0 right-0 flex justify-center z-40 transition-all duration-300 ease-in-out transform">
@@ -59,7 +59,7 @@ export default function Home(): JSX.Element {
           transition={{ duration: 0.8 }}
           className="text-center mt-24 mb-4"
         >
-          <p className="text-gray-600 dark:text-gray-400">Hey there, I'm</p>
+          <p className="text-muted-foreground">Hey there, I'm</p>
           <div className="flex items-center justify-center">
             <Image
               src="/images/iyel4h.jpg"
@@ -87,14 +87,14 @@ export default function Home(): JSX.Element {
           <Link
             key={link.name}
             href={link.url}
-            className="rounded-full hover:bg-gray-400 dark:hover:bg-gray-600 transition-all ease-in-out transform scale-100 hover:scale-105"
+            className="rounded-full hover:bg-muted-foreground/20 dark:hover:bg-muted-foreground/40 transition-all ease-in-out transform scale-100 hover:scale-105"
           >
             {getSocialIcon(link.iconName)}
           </Link>
         ))}
       </motion.div>
 
-      <button className="inline-flex m-6 items-center gap-2 bg-green-100 dark:bg-green-800 text-green-800 shining-text dark:text-green-400 px-3 py-1 rounded-full text-sm font-medium hover:bg-green-200 dark:hover:bg-green-700 transition-colors whitespace-nowrap">
+      <button className="inline-flex m-6 items-center gap-2 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-400 px-3 py-1 rounded-full text-sm font-medium hover:bg-green-200 dark:hover:bg-green-700 transition-colors whitespace-nowrap">
         <span className="relative flex h-3 w-3">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
           <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
@@ -118,7 +118,7 @@ export default function Home(): JSX.Element {
             whileHover={{ scale: 1.02 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="border border-gray-800 w-full max-w-lg m-4 bg-transparent backdrop-blur-lg rounded-xl shadow-md p-4 hover:shadow-lg hover:border-gray-600 dark:hover:border-gray-500 transition-all cursor-pointer"
+            className="border-border w-full max-w-lg m-4 bg-transparent backdrop-blur-lg rounded-xl shadow-md p-4 hover:shadow-lg hover:border-muted-foreground/30 dark:hover:border-muted-foreground/50 transition-all cursor-pointer"
           >
             <div className="flex items-center gap-4">
               <Image
@@ -132,10 +132,10 @@ export default function Home(): JSX.Element {
                 <Link href={experience.url} className="hover:underline">
                   <p className="text-lg font-medium">{experience.company}</p>
                 </Link>
-                <p className="text-sm font-semibold text-gray-300">
+                <p className="text-sm font-semibold text-muted-foreground">
                   {experience.jobTitle}
                 </p>
-                <p className="text-sm text-gray-400">{experience.duration}</p>
+                <p className="text-sm text-muted-foreground">{experience.duration}</p>
               </div>
             </div>
           </motion.section>
@@ -156,7 +156,7 @@ export default function Home(): JSX.Element {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="border border-gray-800 w-full max-w-lg m-4 bg-transparent backdrop-blur-lg rounded-xl shadow-md p-4"
+            className="border-border w-full max-w-lg m-4 bg-transparent backdrop-blur-lg rounded-xl shadow-md p-4"
           >
             <div className="relative w-full h-40 rounded-lg overflow-hidden">
               <Image
@@ -175,14 +175,14 @@ export default function Home(): JSX.Element {
                   {project.techStack?.map((tech) => (
                     <p
                       key={tech}
-                      className="text-xs bg-gray-800 dark:bg-gray-200 dark:text-black rounded-sm p-1"
+                      className="text-xs bg-muted text-muted-foreground rounded-sm p-1"
                     >
                       {tech}
                     </p>
                   ))}
                 </div>
               </Link>
-              <p className="text-sm mt-2 font-semibold text-gray-300">
+              <p className="text-sm mt-2 font-semibold text-muted-foreground">
                 {project.description}
               </p>
              <div className="mt-4 flex gap-4">

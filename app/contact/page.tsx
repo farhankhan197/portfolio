@@ -99,7 +99,7 @@ export default function Contact(): JSX.Element {
 
   return (
     <>
-      <div className="min-h-screen flex flex-col items-center p-6 bg-transparent text-black dark:text-white">
+      <div className="min-h-screen flex flex-col items-center p-6 bg-transparent text-foreground">
         {/* Navigation Bar */}
         <NavBar />
 
@@ -111,7 +111,7 @@ export default function Contact(): JSX.Element {
           className="text-center mt-20 mb-8 w-full max-w-lg px-4"
         >
           <h1 className="text-3xl font-extrabold">Contact Me</h1>
-          <p className="text-lg text-gray-500 mt-2">
+          <p className="text-lg text-muted-foreground mt-2">
             Feel free to reach out for collaborations, questions, or just to say
             hi!
           </p>
@@ -128,7 +128,7 @@ export default function Contact(): JSX.Element {
             <Link
               key={link.name}
               href={link.url}
-              className="bg-gray-300 dark:bg-gray-800 rounded-full hover:bg-gray-400 dark:hover:bg-gray-600 transition"
+              className="bg-muted dark:bg-muted rounded-full hover:bg-muted-foreground/20 dark:hover:bg-muted-foreground/30 transition"
             >
               {link.icon}
             </Link>
@@ -140,7 +140,7 @@ export default function Contact(): JSX.Element {
           <p className="mt-1 text-lg group hover:underline">farhankhan.code@gmail.com</p>
         </Link>
 
-        <button className="inline-flex m-6 items-center gap-2 bg-green-100 dark:bg-green-800 text-green-800 shining-text dark:text-green-400 px-3 py-1 rounded-full text-sm font-medium hover:bg-green-200 dark:hover:bg-green-700 transition-colors whitespace-nowrap">
+        <button className="inline-flex m-6 items-center gap-2 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-400 px-3 py-1 rounded-full text-sm font-medium hover:bg-green-200 dark:hover:bg-green-800 transition-colors whitespace-nowrap">
           <span className="relative flex h-3 w-3">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
@@ -156,10 +156,10 @@ export default function Contact(): JSX.Element {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
-          className="w-full max-w-lg bg-transparent backdrop-blur-lg border border-gray-800 rounded-xl shadow-md p-6"
+          className="w-full max-w-lg bg-transparent backdrop-blur-lg border border-border rounded-xl shadow-md p-6"
         >
           <div className="mb-4">
-            <label htmlFor="name" className="block text-sm text-gray-400">
+            <label htmlFor="name" className="block text-sm text-muted-foreground">
               Name
             </label>
             <input
@@ -169,12 +169,12 @@ export default function Contact(): JSX.Element {
               value={formData.name}
               onChange={handleChange}
               required
-              className="w-full mt-1 p-2 border border-gray-600 rounded-md bg-transparent text-white focus:outline-none focus:border-blue-500"
+              className="w-full mt-1 p-2 border border-border rounded-md bg-transparent text-foreground focus:outline-none focus:border-primary"
             />
           </div>
 
           <div className="mb-4">
-            <label htmlFor="email" className="block text-sm text-gray-400">
+            <label htmlFor="email" className="block text-sm text-muted-foreground">
               Email
             </label>
             <input
@@ -184,12 +184,12 @@ export default function Contact(): JSX.Element {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full mt-1 p-2 border border-gray-600 rounded-md bg-transparent text-white focus:outline-none focus:border-blue-500"
+              className="w-full mt-1 p-2 border border-border rounded-md bg-transparent text-foreground focus:outline-none focus:border-primary"
             />
           </div>
 
           <div className="mb-4">
-            <label htmlFor="message" className="block text-sm text-gray-400">
+            <label htmlFor="message" className="block text-sm text-muted-foreground">
               Message
             </label>
             <textarea
@@ -199,7 +199,7 @@ export default function Contact(): JSX.Element {
               onChange={handleChange}
               required
               rows={4}
-              className="w-full mt-1 p-2 border border-gray-600 rounded-md bg-transparent text-white focus:outline-none focus:border-blue-500"
+              className="w-full mt-1 p-2 border border-border rounded-md bg-transparent text-foreground focus:outline-none focus:border-primary"
             ></textarea>
           </div>
 
@@ -216,7 +216,7 @@ export default function Contact(): JSX.Element {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full bg-primary text-primary-foreground p-2 rounded-md hover:bg-primary/90 transition disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSubmitting ? "Sending..." : "Send Message"}
           </button>

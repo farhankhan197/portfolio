@@ -11,7 +11,7 @@ export default function Loading() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: i * 0.1 }}
-            className="h-20 bg-gray-800/50 rounded-xl animate-pulse"
+            className="h-20 bg-muted rounded-xl animate-pulse"
           />
         ))}
       </div>

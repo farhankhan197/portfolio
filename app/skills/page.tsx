@@ -9,7 +9,7 @@ export default function Skills(): JSX.Element {
 
   return (
     <>
-      <div className="min-h-screen flex flex-col items-center p-6 bg-transparent text-black dark:text-white">
+      <div className="min-h-screen flex flex-col items-center p-6 bg-transparent text-foreground">
         {/* Navigation Bar */}
         <NavBar />
 
@@ -21,7 +21,7 @@ export default function Skills(): JSX.Element {
           className="text-center mt-20 mb-8 w-full max-w-3xl px-4"
         >
           <h1 className="text-3xl font-extrabold">Skills</h1>
-          <p className="text-lg text-gray-500 mt-2">
+          <p className="text-lg text-muted-foreground mt-2">
             Technologies and tools I work with regularly.
           </p>
         </motion.div>
@@ -39,10 +39,10 @@ export default function Skills(): JSX.Element {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="p-4 border border-gray-800 rounded-xl bg-transparent backdrop-blur-lg shadow-md"
+              className="p-4 border border-border rounded-xl bg-transparent backdrop-blur-lg shadow-md"
             >
               <h2 className="text-xl font-semibold mb-3">{skill.category}</h2>
-              <ul className="text-gray-400">
+              <ul className="text-muted-foreground">
                 {skill.list.map((item, i) => (
                   <li key={i} className="mt-1">
                     - {item}

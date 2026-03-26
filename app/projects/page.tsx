@@ -10,7 +10,7 @@ import { projectsPage } from "@/lib/data";
 export default function Projects(): JSX.Element {
   return (
     <>
-      <div className="min-h-screen flex flex-col items-center p-6 bg-transparent text-black dark:text-white">
+      <div className="min-h-screen flex flex-col items-center p-6 bg-transparent text-foreground">
         {/* Navigation Bar */}
         <NavBar />
 
@@ -22,7 +22,7 @@ export default function Projects(): JSX.Element {
           className="text-center mt-20 mb-8 w-full max-w-3xl px-4"
         >
           <h1 className="text-3xl font-extrabold">Projects</h1>
-          <p className="text-lg text-gray-500 mt-2">
+          <p className="text-lg text-muted-foreground mt-2">
             A collection of my recent work in web development and AI.
           </p>
         </motion.div>
@@ -39,10 +39,10 @@ export default function Projects(): JSX.Element {
               key={index}
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
-              className="bg-transparent backdrop-blur-lg border border-gray-800 rounded-xl shadow-md overflow-hidden"
+              className="bg-transparent backdrop-blur-lg border border-border rounded-xl shadow-md overflow-hidden"
             >
               {project.image && (
-                <div className="relative w-full h-40 bg-gray-800">
+                <div className="relative w-full h-40 bg-muted">
                   <Image
                     src={project.image}
                     alt={project.title}
@@ -53,13 +53,13 @@ export default function Projects(): JSX.Element {
               )}
               <div className="p-6">
                 <h2 className="text-xl font-semibold">{project.title}</h2>
-                <p className="text-gray-400 mt-2">{project.description}</p>
+                <p className="text-muted-foreground mt-2">{project.description}</p>
                 {project.techStack && (
                   <div className="flex flex-wrap gap-2 mt-3">
                     {project.techStack.map((tech) => (
                       <span
                         key={tech}
-                        className="text-xs bg-gray-700 px-2 py-1 rounded"
+                        className="text-xs bg-muted text-muted-foreground px-2 py-1 rounded"
                       >
                         {tech}
                       </span>

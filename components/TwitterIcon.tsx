@@ -4,7 +4,7 @@ interface TwitterIconProps {
 
 const TwitterIcon: React.FC<TwitterIconProps> = ({ className }) => {
   return (
-    <div className="text-foreground dark:text-white">
+    <div className="text-foreground">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="50"
