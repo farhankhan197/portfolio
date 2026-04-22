@@ -72,7 +72,7 @@ export default function Home(): JSX.Element {
           <h1 className="text-3xl font-extrabold">Farhan Khan</h1>
              
           <p className="text-left w-full max-w-lg p-6 bg-transparent backdrop-blur-lg rounded-xl shadow-md">
-            I am a third-year CS student, passionate Full-Stack Developer, and
+            I am a fourth-year CS student, passionate Full-Stack Developer, and
             Machine Learning Engineer with expertise in building
             high-performance web applications and AI-driven solutions.
           </p>
