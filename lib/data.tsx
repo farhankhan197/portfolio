@@ -66,6 +66,13 @@ export const projectsPage: Project[] = [
     techStack: ["Next.js", "TypeScript", "Framer Motion"],
   },
   {
+    title: "Ergosphere",
+    description: "A physics-inspired simulation platform.",
+    url: "https://ergosphere.vercel.app/",
+    image: "/images/ergosphere.png",
+    techStack: ["Next.js", "TypeScript", "Three.js"],
+  },
+  {
     title: "Vizack Enterprises",
     description: "A website for a construction company built with Next.js.",
     url: "https://vizackenterprises.com",

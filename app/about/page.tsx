@@ -24,7 +24,7 @@ export default function About(): JSX.Element {
           <p className="text-left mt-6 text-lg leading-relaxed">
             I am a passionate Full-Stack Developer and Machine Learning
             enthusiast, currently a
-            <strong> third-year Computer Science student</strong>. I enjoy
+            <strong> fourth-year Computer Science student</strong>. I enjoy
             solving complex problems and building
             <strong> high-performance web applications</strong>. My work extends
             to
