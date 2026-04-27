@@ -30,22 +30,19 @@ export default function Navbar() {
         initial={{ y: 0, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeInOut" }}
-        className={`fixed left-0 right-0 flex justify-center z-40 transition-all duration-500 mx-auto ease-in-out shadow-none transform ${
-          isScrolled
-            ? `top-0 shadow-none scale-100 px-8 py-4 bg-background ${
-                isOpen ? "shadow-none" : "shadow-md"
-              } rounded-none`
-            : `top-0 scale-100 max-w-5xl px-6 py-4 bg-background ${
-                isOpen ? "shadow-none" : "shadow-lg"
-              } rounded-lg`
-        }`}
+        className={`fixed left-0 right-0 flex justify-center z-40 transition-all duration-500 mx-auto ease-in-out shadow-none transform ${isScrolled
+            ? `top-0 shadow-none scale-100 px-8 py-4 bg-background ${isOpen ? "shadow-none" : "shadow-md"
+            } rounded-none`
+            : `top-0 scale-100 max-w-5xl px-6 py-4 bg-background ${isOpen ? "shadow-none" : "shadow-lg"
+            } rounded-lg`
+          }`}
       >
         <div className="flex justify-between items-center w-full max-w-6xl mx-auto">
           <motion.h1
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-md font-semibold text-foreground"
+            className="text-md font-semibold text-foreground shining-text"
           >
             Starfield
           </motion.h1>

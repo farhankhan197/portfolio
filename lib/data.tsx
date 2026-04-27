@@ -62,7 +62,7 @@ export const projectsPage: Project[] = [
     title: "Starfield Portfolio",
     description: "A personal portfolio website inspired by space. Built with Next.js.",
     url: "https://farhankhan.vercel.app/",
-    image: "/images/portfolio-preview.png",
+    image: "/images/starfield-preview.png",
     techStack: ["Next.js", "TypeScript", "Framer Motion"],
   },
   {
@@ -89,13 +89,7 @@ export const projectsPage: Project[] = [
 ];
 
 export const workExperience: WorkExperience[] = [
-  {
-    company: "The Catchy Pixel",
-    logo: "/images/thecatchypixel_logo.jpg",
-    jobTitle: "Co-Founder",
-    duration: "Mar 2025 - Present",
-    url: "https://x.com/thecatchypixel",
-  },
+
   {
     company: "Edslash",
     logo: "/images/edslash_logo.png",

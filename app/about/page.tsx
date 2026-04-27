@@ -59,9 +59,8 @@ export default function About(): JSX.Element {
           </p>
 
           <p className="text-lg leading-relaxed mt-4">
-            I have interned at <strong>Vizack</strong>, <strong>Edslash</strong>
-            , and <strong>The Catchy Pixel</strong>, where I contributed to
-            various projects. I also founded <strong>Spark Club</strong> to
+            I have interned at <strong>Vizack</strong> and <strong>Edslash</strong>,
+            where I contributed to various projects. I also founded <strong>Spark Club</strong> to
             bring together developers who share a passion for technology.
           </p>
         </motion.div>
