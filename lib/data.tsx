@@ -42,49 +42,21 @@ export const skills: Skill[] = [
 
 export const projects: Project[] = [
   {
-    title: "Retail Radar",
-    description: "A Dashboard for Retail Owners",
-    url: "",
-    image: "/images/retail-radar.png",
-    techStack: ["Next.js", "TypeScript", "Tailwind CSS"],
-  },
-  {
-    title: "Vizack Enterprises",
-    description: "A Next.js Website for Vizack Enterprises.",
-    url: "https://vizackenterprises.com",
-    image: "/images/vizack.png",
-    techStack: ["Next.js", "TypeScript", "Tailwind CSS"],
+    title: "Ghost",
+    description: "AI source attribution and final PR diff enforcement for open source projects.",
+    url: "https://ghost.farhankhan.site",
+    image: "/images/ghost-site.png",
+    techStack: ["Next.js", "C++", "Git"],
   },
 ];
 
 export const projectsPage: Project[] = [
   {
-    title: "Starfield Portfolio",
-    description: "A personal portfolio website inspired by space. Built with Next.js.",
-    url: "https://farhankhan.vercel.app/",
-    image: "/images/starfield-preview.png",
-    techStack: ["Next.js", "TypeScript", "Framer Motion"],
-  },
-  {
-    title: "Ergosphere",
-    description: "A physics-inspired simulation platform.",
-    url: "https://ergosphere.vercel.app/",
-    image: "/images/ergosphere.png",
-    techStack: ["Next.js", "TypeScript", "Three.js"],
-  },
-  {
-    title: "Vizack Enterprises",
-    description: "A website for a construction company built with Next.js.",
-    url: "https://vizackenterprises.com",
-    image: "/images/vizack.png",
-    techStack: ["Next.js", "TypeScript", "Tailwind CSS"],
-  },
-  {
-    title: "Retail Radar",
-    description: "A retail analytics dashboard for tracking sales data.",
-    url: "https://retail-radar-bice.vercel.app/",
-    image: "/images/retail-radar.png",
-    techStack: ["Next.js", "TypeScript", "Tailwind CSS"],
+    title: "Ghost",
+    description: "AI source attribution and final PR diff enforcement for open source projects.",
+    url: "https://ghost.farhankhan.site",
+    image: "/images/ghost-site.png",
+    techStack: ["Next.js", "C++", "Git"],
   },
 ];
 

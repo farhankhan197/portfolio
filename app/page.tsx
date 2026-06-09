@@ -182,11 +182,11 @@ export default function Home(): JSX.Element {
                   ))}
                 </div>
               </Link>
-              <p className="text-sm mt-2 font-semibold text-muted-foreground">
+             <p className="text-sm mt-2 font-semibold text-muted-foreground">
                 {project.description}
               </p>
              <div className="mt-4 flex gap-4">
-              <Link href = "" className="rotate-0 hover:rotate-45 transition-all ease-in-out transform"><LinkIcon/></Link>
+              <Link href={project.url} className="rotate-0 hover:rotate-45 transition-all ease-in-out transform"><LinkIcon/></Link>
              </div>
             </div>
           </motion.section>

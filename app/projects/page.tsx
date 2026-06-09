@@ -23,7 +23,7 @@ export default function Projects(): JSX.Element {
         >
           <h1 className="text-3xl font-extrabold">Projects</h1>
           <p className="text-lg text-muted-foreground mt-2">
-            A collection of my recent work in web development and AI.
+            Focused work in source attribution, developer tooling, and AI policy.
           </p>
         </motion.div>
 
@@ -32,7 +32,7 @@ export default function Projects(): JSX.Element {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
-          className="w-full max-w-5xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="w-full max-w-3xl grid grid-cols-1 gap-6"
         >
           {projectsPage.map((project, index) => (
             <motion.div
@@ -76,6 +76,15 @@ export default function Projects(): JSX.Element {
             </motion.div>
           ))}
         </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="mt-8 text-sm text-muted-foreground"
+        >
+          More coming soon.
+        </motion.p>
 
         <Footer />
       </div>
