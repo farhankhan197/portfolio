@@ -62,6 +62,13 @@ export const projects: Project[] = [
     image: "/images/faucix.png",
     techStack: ["Next.js", "Tailwind CSS"],
   },
+  {
+    title: "AR Cloud Kitchen",
+    description: "Restaurant website with online menu, ordering integration, and brand presence.",
+    url: "https://arcloudkitchen.devian.in",
+    image: "/images/ar-cloud-kitchen.png",
+    techStack: ["Next.js", "Tailwind CSS"],
+  },
 ];
 
 export const projectsPage: Project[] = [
@@ -84,6 +91,13 @@ export const projectsPage: Project[] = [
     description: "Premium sanitaryware and bathware manufacturer website with product catalog.",
     url: "https://faucix.devian.in",
     image: "/images/faucix.png",
+    techStack: ["Next.js", "Tailwind CSS"],
+  },
+  {
+    title: "AR Cloud Kitchen",
+    description: "Restaurant website with online menu, ordering integration, and brand presence.",
+    url: "https://arcloudkitchen.devian.in",
+    image: "/images/ar-cloud-kitchen.png",
     techStack: ["Next.js", "Tailwind CSS"],
   },
 ];
