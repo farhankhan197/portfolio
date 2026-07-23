@@ -48,6 +48,20 @@ export const projects: Project[] = [
     image: "/images/ghost-site.png",
     techStack: ["Next.js", "C++", "Git"],
   },
+  {
+    title: "Retail Radar",
+    description: "Retail inventory and operations management dashboard for modern retailers.",
+    url: "https://retailradar.farhankhan.site",
+    image: "/images/retail-radar.png",
+    techStack: ["Next.js", "Tailwind CSS"],
+  },
+  {
+    title: "Faucix",
+    description: "Premium sanitaryware and bathware manufacturer website with product catalog.",
+    url: "https://faucix.devian.in",
+    image: "/images/faucix.png",
+    techStack: ["Next.js", "Tailwind CSS"],
+  },
 ];
 
 export const projectsPage: Project[] = [
@@ -57,6 +71,20 @@ export const projectsPage: Project[] = [
     url: "https://ghost.farhankhan.site",
     image: "/images/ghost-site.png",
     techStack: ["Next.js", "C++", "Git"],
+  },
+  {
+    title: "Retail Radar",
+    description: "Retail inventory and operations management dashboard for modern retailers.",
+    url: "https://retailradar.farhankhan.site",
+    image: "/images/retail-radar.png",
+    techStack: ["Next.js", "Tailwind CSS"],
+  },
+  {
+    title: "Faucix",
+    description: "Premium sanitaryware and bathware manufacturer website with product catalog.",
+    url: "https://faucix.devian.in",
+    image: "/images/faucix.png",
+    techStack: ["Next.js", "Tailwind CSS"],
   },
 ];
 
